@@ -1,0 +1,25 @@
+{
+  "name": "health-indicator",
+  "version": "0.0.1",
+  "description": "Health indicator kit for server-side monitoring & balancing",
+  "main": "scr/index",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.qiwi.com:jslab/health-indicator.git"
+  },
+  "keywords": [
+    "health",
+    "healtz",
+    "healthcheck",
+    "indicator",
+    "monitoring"
+  ],
+  "author": "a.golub@qiwi.com",
+  "license": "MIT"
+}
