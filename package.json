@@ -21,5 +21,8 @@
     "monitoring"
   ],
   "author": "a.golub@qiwi.com",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "lodash-es": "^4.17.5"
+  }
 }
