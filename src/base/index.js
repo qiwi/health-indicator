@@ -1,4 +1,5 @@
 export {
+	extend,
 	min,
 	minBy,
 	map,

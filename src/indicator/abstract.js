@@ -1,85 +1,78 @@
-import Health from '../health';
-import {mapValues, find, filter, isDefined, minBy, toArray} from '../base';
+// @flow
 
-export default class Abstractindicator {
-	constructor({deps, critical}) {
-		if (this.constructor === Abstractindicator) {
-			throw new Error('Abstract cannot be instantiated');
-		}
+import Health from '../health'
+import {mapValues, find} from '../base'
+import type {IIndicator, IIndicatorOpts, IIndicatorDeps} from './interface'
+import type {IHealth} from '../health/interface'
 
-		this.deps = deps;
-		this.critical = !!critical;
-	}
+/**
+ * Abstract indicator class
+ * @class AbstractIndicator
+ * @param {IIndicatorOpts} opts
+ * @abstract
+ * @implements IIndicator
+ * @returns {IIndicator}
+ */
+export default class AbstractIndicator implements IIndicator {
 
-	health() {
-		const details = this.getDetails();
-		const status = this.getStatus();
-		const critical = this.getCritical();
+  constructor ({critical, status, deps, extra}: IIndicatorOpts): IIndicator {
+    if (this.constructor === AbstractIndicator) {
+      throw new Error('Abstract cannot be instantiated')
+    }
 
-		return new Health({
-			status,
-			critical,
-			details
-		});
-	}
+    this.status = status
+    this.critical = !!critical
+    this.deps = deps
+    this.extra = extra
 
-	getStatus() {
-		if (!this.sources) {
-			return this.schema.defaultStatus;
-		}
-	}
+    return this
+  }
 
-	getCritical() {
-		if (!this.sources) {
-			return this.critical;
-		}
-		return this.schema.defaultCritical;
-	}
+  status: string | void
+  critical: boolean
+  deps: IIndicatorDeps | void
+  extra: any
 
-	getDetails() {
-		if (!this.sources) {
-			return null;
-		}
-	}
+  health (): IHealth {
+    const status = this.getStatus() || 'OK'
+    const critical = this.getCritical()
+    const deps = mapValues(this.getDeps(), dep => dep.health())
+    const extra = this.getExtra()
 
-	static resolveCritical(details) {
-		return !!find(details, ({critical}) => critical === true);
-	}
+    return new Health({
+      status,
+      critical,
+      deps,
+      extra
+    })
+  }
 
-	static resolveStatus(details, order) {
-		const deps = toArray(details);
-		const criticalDeps = filter(deps, ({critical}) => critical === true);
+  getStatus (): string | void {
+    if (this.status) {
+      return this.status
+    }
 
-		if (criticalDeps.length) {
-			return this.getLowestStatus(criticalDeps, order);
-		}
+    if (this.deps) {
+      return this.constructor.resolveStatus(this.deps)
+    }
+  }
 
-		const lowestStatus = this.getLowestStatus(deps, order);
+  getCritical (): boolean {
+    return false
+  }
 
+  getDeps (): IIndicatorDeps | void {
+  }
 
-	}
+  getExtra (): any {
+    return this.extra
+  }
 
-	static resolveDetails(sources) {
-		return mapValues(sources, source => {
-			if (source instanceof Abstractindicator) {
-				return source.health();
-			}
+  static resolveCritical (deps) {
+    return !!find(deps, ({critical}) => critical === true)
+  }
 
-			return new Health(source);
-		});
-	}
-
-	/**
-	 *
-	 * @param {Health[]} set
-	 * @param {string[]} order
-	 * @returns {string/null}
-	 */
-	static getLowestStatus(set, order) {
-		if (!set || !set.length) {
-			return null;
-		}
-
-		return minBy(set, ({status}) => order.indexOf(status)).status;
-	}
+  static resolveStatus (deps, order) {
+    return 'OK'
+  }
 }
