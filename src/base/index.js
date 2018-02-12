@@ -1,13 +1,16 @@
 export {
 	min,
+	minBy,
 	map,
 	filter,
 	find,
+	filter,
 	isUndefined,
 	isObject,
 	isString,
 	isFunction,
-	mapValues
+	mapValues,
+	toArray
 } from 'lodash-es';
 
 export function isDefined(value) {

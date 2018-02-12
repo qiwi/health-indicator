@@ -1,5 +1,5 @@
 import Health from '../health';
-import {mapValues, find, isDefined, min} from '../base';
+import {mapValues, find, filter, isDefined, minBy, toArray} from '../base';
 
 export default class Indicator {
 	constructor({schema, sources, critical}) {
@@ -44,7 +44,16 @@ export default class Indicator {
 	}
 
 	static resolveStatus(details, order) {
-		// return min(...)
+		const deps = toArray(details);
+		const criticalDeps = filter(deps, ({critical}) => critical === true);
+
+		if (criticalDeps.length) {
+			return this.getLowestStatus(criticalDeps, order);
+		}
+
+		const lowestStatus = this.getLowestStatus(deps, order);
+
+
 	}
 
 	static resolveDetails(sources) {
@@ -55,5 +64,19 @@ export default class Indicator {
 
 			return new Health(source);
 		});
+	}
+
+	/**
+	 *
+	 * @param {Health[]} set
+	 * @param {string[]} order
+	 * @returns {string/null}
+	 */
+	static getLowestStatus(set, order) {
+		if (!set || !set.length) {
+			return null;
+		}
+
+		return minBy(set, ({status}) => order.indexOf(status)).status;
 	}
 }
