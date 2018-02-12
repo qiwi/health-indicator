@@ -2,7 +2,6 @@ export {
 	min,
 	minBy,
 	map,
-	filter,
 	find,
 	filter,
 	isUndefined,

@@ -4,10 +4,19 @@
   "description": "Health indicator kit for server-side monitoring & balancing",
   "main": "scr/index",
   "directories": {
+    "source": "src",
     "test": "test"
   },
+  "@std/esm": {
+    "esm": "all",
+    "cjs": true
+  },
   "scripts": {
-    "test": "npm test"
+    "flow": "flow",
+    "lint": "standard-flow src/health/*.js",
+    "mocha": "nyc mocha --opts .mocha.opts",
+    "test": "npm run flow & npm run lint & npm run mocha",
+    "build": "babel src/health --out-dir dist/health"
   },
   "repository": {
     "type": "git",
@@ -20,9 +29,43 @@
     "indicator",
     "monitoring"
   ],
-  "author": "a.golub@qiwi.com",
+  "author": "Anton Golub <a.golub@qiwi.com>",
   "license": "MIT",
   "dependencies": {
     "lodash-es": "^4.17.5"
+  },
+  "devDependencies": {
+    "@std/esm": "^0.20.0",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-preset-flow": "^6.23.0",
+    "chai": "^4.1.2",
+    "chai-spies": "^1.0.0",
+    "chai-subset": "^1.6.0",
+    "eslint": "^4.17.0",
+    "flow": "^0.2.3",
+    "flow-remove-types": "^1.2.3",
+    "glob": "^7.1.2",
+    "mocha": "^5.0.0",
+    "nyc": "^11.4.1",
+    "standard-flow": "^1.0.0"
+  },
+  "standard-flow": {
+    "parser": "babel-eslint",
+    "globals": [
+      "it",
+      "expect",
+      "describe"
+    ],
+    "ignore": [
+    ],
+    "plugins": [
+      "flowtype"
+    ],
+    "settings": {
+      "flowtype": {
+        "onlyFilesWithFlowAnnotation": true
+      }
+    }
   }
 }
