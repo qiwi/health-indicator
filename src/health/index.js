@@ -20,5 +20,7 @@ export default class Health implements IHealth {
 
     this.status = status
     this.critical = !!critical
+
+    return this
   }
 }

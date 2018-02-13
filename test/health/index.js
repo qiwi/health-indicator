@@ -3,7 +3,7 @@ import Health from '../../src/health'
 
 const {expect} = chai
 
-describe('health', () => {
+describe('Health', () => {
   it('constructs proper instance', () => {
     const status = 'Foo'
     const critical = false

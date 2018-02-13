@@ -2,6 +2,7 @@ export {
 	extend,
 	min,
 	minBy,
+	maxBy,
 	map,
 	find,
 	filter,

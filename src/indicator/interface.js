@@ -20,9 +20,9 @@ export interface IIndicator {
 
   getExtra(): any;
 
-  static resolveStatus(deps?: IIndicatorDeps): string;
+  // static resolveStatus(deps?: IIndicatorDeps): string;
 
-  static resolveCritical(deps?: IIndicatorDeps): boolean;
+  // static resolveCritical(deps?: IIndicatorDeps): boolean;
 }
 
 export type IIndicatorOpts = {
