@@ -16,7 +16,8 @@
     "lint": "standard-flow src/**/*.js test/**/*.js",
     "mocha": "nyc mocha --opts .mocha.opts",
     "test": "npm run flow && npm run lint && npm run mocha",
-    "build": "babel src --out-dir dist"
+    "build": "babel src --out-dir dist",
+    "coveralls": "npm test && nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -47,6 +48,7 @@
     "chai": "^4.1.2",
     "chai-spies": "^1.0.0",
     "chai-subset": "^1.6.0",
+    "coveralls": "^3.0.0",
     "eslint": "^4.17.0",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-config-standard-flow": "^1.0.1",
