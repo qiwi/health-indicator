@@ -3,7 +3,7 @@
 import type {IHealth, IHealthExtra} from '../health/interface'
 
 export interface IIndicator {
-  critical: boolean;
+  critical: boolean | void;
   status: string | void;
   deps: IIndicatorDeps | void;
   extra: IHealthExtra | void;
@@ -12,17 +12,14 @@ export interface IIndicator {
 
   health(): IHealth;
 
-  getCritical(): boolean | void;
+  getCritical(): boolean;
 
-  getStatus(): string | void;
+  getStatus(): string;
 
   getDeps(): IIndicatorDeps | void;
 
   getExtra(): any;
 
-  // static resolveStatus(deps?: IIndicatorDeps): string;
-
-  // static resolveCritical(deps?: IIndicatorDeps): boolean;
 }
 
 export type IIndicatorOpts = {

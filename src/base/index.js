@@ -1,11 +1,15 @@
+// @flow
+
 export {
 	extend,
 	min,
 	minBy,
 	maxBy,
 	map,
+	each,
 	find,
 	filter,
+	isEmpty,
 	isUndefined,
 	isObject,
 	isString,
@@ -14,6 +18,6 @@ export {
 	toArray
 } from 'lodash-es';
 
-export function isDefined(value) {
+export function isDefined(value: any): boolean {
 	return value !== undefined;
 }

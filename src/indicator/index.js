@@ -1,3 +1,3 @@
-import AbstractIndicator from './abstract';
+import AbstractIndicator from './abstract'
 
-export {AbstractIndicator};
+export {AbstractIndicator}
