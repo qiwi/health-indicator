@@ -17,7 +17,7 @@ export const DEFAULT_HTTP_CODE = 200
  * @returns {IIndicator}
  */
 export default class AbstractIndicator implements IIndicator {
-  constructor ({ critical, status, deps, extra }: IIndicatorOpts): IIndicator {
+  constructor ({ critical, status, deps, extra }: IIndicatorOpts = {}): IIndicator {
     if (this.constructor === AbstractIndicator) {
       throw new Error('Abstract cannot be instantiated')
     }

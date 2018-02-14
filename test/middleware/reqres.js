@@ -1,4 +1,4 @@
-import {assign, isObject, each} from '../../src/base'
+import {assign, isObject, each} from 'lodash-es'
 
 export class Req {
   constructor (opts) {

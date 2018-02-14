@@ -6,6 +6,10 @@ import type {IIndicator} from '../indicator/interface'
 export default class Endpoint implements IEndpoint {
   indicator: IIndicator
   constructor (indicator: IIndicator): IEndpoint {
+    if (!indicator) {
+      throw new Error('Indicator param is required')
+    }
+
     this.indicator = indicator
 
     return this
@@ -14,6 +18,7 @@ export default class Endpoint implements IEndpoint {
     try {
       const health = this.indicator.health()
       const status = health.status
+
       // https://github.com/facebook/flow/issues/2048
       // $FlowFixMe
       const httpCode: number = this.indicator.constructor.getHttpCode(status) // TODO separate mapping
@@ -26,10 +31,9 @@ export default class Endpoint implements IEndpoint {
     // $FlowFixMe
     } catch (e) {
       // TODO handle, log, etc.
-
       res
         .status(500)
-        .send({message: 'Health check obtain failed'})
+        .send({error: 'Health check obtain failed'})
     }
   }
 }
