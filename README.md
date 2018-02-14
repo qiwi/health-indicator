@@ -8,3 +8,25 @@
 
 
 Health indicator kit for server-side monitoring and balancing.
+
+```
+    import express from 'express'
+    import {SemaphoreIndicator, Endpoint} from 'health-indicator'
+    
+    const app = express()
+    const indicator = new SemaphoreIndicator()
+    const endpoint = new Endpoint(indicator)
+    
+    
+    // Override 'getStatus' impl with your business logic accordance
+    indicator.getStatus = () => {
+        ...
+        return 'GREEN'
+    }
+    // ... or better vis class MyIndicator extends SemaphoreIndicator {...}
+    // ... or use direct set for indicator status property
+    indicator.status = 'RED'
+    
+    app.get('/health', endpoint.middleware)
+         
+```
