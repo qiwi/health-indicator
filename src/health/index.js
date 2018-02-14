@@ -6,7 +6,7 @@ import type {IHealth, IHealthOpts, IHealthDeps} from './interface'
 export default class Health implements IHealth {
   status: string;
   critical: boolean;
-  deps: IHealthDeps | void;
+  deps: IHealthDeps;
   $key: any;
   $value: any;
 

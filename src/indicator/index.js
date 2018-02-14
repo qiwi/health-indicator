@@ -1,3 +1,5 @@
+// @flow
+
 import AbstractIndicator from './abstract'
 import StandardIndicator from './standard'
 import SemaphoreIndicator from './semaphore'

@@ -1,6 +1,7 @@
 // @flow
 
 import AbstractIndicator from './abstract'
+import type {IStatusMap, IHttpMap} from './interface'
 
 // TODO move to endpoint
 const OK = 200
@@ -25,11 +26,11 @@ export default class StandardIndicator extends AbstractIndicator {
     return DEFAULT_HTTP_CODE
   }
 
-  static getHttpMap (): Object {
+  static getHttpMap (): IHttpMap {
     return HTTP_MAP
   }
 
-  static getStatusMap (): Object {
+  static getStatusMap (): IStatusMap {
     return STATUS_MAP
   }
 

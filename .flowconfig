@@ -4,3 +4,6 @@
 
 [ignore]
 node_modules/.*
+
+[libs]
+./definitions/

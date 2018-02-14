@@ -5,7 +5,7 @@ export interface IHealth {
 
   status: string,
   critical: boolean,
-  deps: IHealthDeps | void,
+  deps: IHealthDeps,
 
   [key: string]: any,
 }
@@ -13,14 +13,14 @@ export interface IHealth {
 export type IHealthOpts = {
   status: string,
   critical?: boolean,
-  deps?: IHealthDeps,
-  extra?: IHealthExtra,
+  deps: ?IHealthDeps,
+  extra: ?IHealthExtra,
 }
 
 export type IHealthDeps = {
   [key: string]: IHealth;
-}
+} | void
 
 export type IHealthExtra = {
   [key: string]: any
-}
+} | void

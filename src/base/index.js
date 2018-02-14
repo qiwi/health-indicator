@@ -2,10 +2,8 @@
 
 export {
   extend,
-  min,
   minBy,
   maxBy,
-  map,
   each,
   find,
   filter,
@@ -18,6 +16,6 @@ export {
   toArray
 } from 'lodash-es'
 
-export function isDefined (value: any): boolean {
+export function isDefined (value ?: any): boolean {
   return value !== undefined
 }

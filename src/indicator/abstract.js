@@ -2,8 +2,8 @@
 
 import Health from '../health'
 import {mapValues, find, minBy, maxBy, filter, toArray, isEmpty, isDefined} from '../base'
-import type {IIndicator, IIndicatorOpts, IIndicatorDeps} from './interface'
-import type {IHealth} from '../health/interface'
+import type {IIndicator, IIndicatorOpts, IIndicatorDeps, IHttpMap, IStatusMap} from './interface'
+import type {IHealth, IHealthDeps, IHealthExtra} from '../health/interface'
 
 export const UNKNOWN = 'UNKNOWN'
 export const DEFAULT_HTTP_CODE = 200
@@ -32,8 +32,8 @@ export default class AbstractIndicator implements IIndicator {
 
   status: string | void
   critical: boolean | void
-  deps: IIndicatorDeps | void
-  extra: any
+  deps: IIndicatorDeps
+  extra: IHealthExtra
 
   /**
    * @returns {Health}
@@ -41,8 +41,8 @@ export default class AbstractIndicator implements IIndicator {
   health (): IHealth {
     const status = this.getStatus()
     const critical = this.getCritical()
-    const deps = mapValues(this.getDeps(), dep => dep.health())
-    const extra = this.getExtra()
+    const deps: IHealthDeps = mapValues(this.getDeps(), dep => dep.health())
+    const extra:? any = this.getExtra()
 
     return new Health({
       status,
@@ -81,7 +81,7 @@ export default class AbstractIndicator implements IIndicator {
     return this.deps
   }
 
-  getExtra (): any {
+  getExtra (): IHealthExtra {
     return this.extra
   }
 
@@ -93,36 +93,40 @@ export default class AbstractIndicator implements IIndicator {
     return [UNKNOWN]
   }
 
-  static getStatusMap (): Object {
+  static getStatusMap (): IStatusMap {
     return {UNKNOWN}
   }
 
   // TODO separate to endpoint class
-  static getHttpMap (): Object {
+  static getHttpMap (): IHttpMap {
     return {
       [UNKNOWN]: DEFAULT_HTTP_CODE
     }
   }
 
-  static getDefaultHttpCode () {
+  static getDefaultHttpCode (): number {
     return DEFAULT_HTTP_CODE
   }
 
   static getHttpCode (status: string): number {
-    return this.getHttpMap()[status] || this.getDefaultHttpCode()
+    const codeMap: IHttpMap = this.getHttpMap()
+    const defCode: number = this.getDefaultHttpCode()
+    const code: number | void = codeMap[status]
+
+    return code || defCode
   }
 
   // TODO separate resolver logic to aggregator class
-  static resolveCritical (deps: any): boolean {
+  static resolveCritical (deps:? IIndicatorDeps): boolean {
     return !!find(deps, dep => dep.getCritical())
   }
 
-  static resolveStatus (deps: any, order: any, def: string): string {
-    if (isEmpty(deps)) {
+  static resolveStatus (deps:? IIndicatorDeps, order: string[], def: string): string {
+    if (deps === undefined || deps === null || isEmpty(deps)) {
       return def
     }
 
-    const criticalDeps = filter(deps, dep => dep.getCritical())
+    const criticalDeps: IIndicatorDeps = filter(deps, dep => dep.getCritical())
     if (!isEmpty(criticalDeps)) {
       return this.getLowestStatus(criticalDeps, order)
     }
@@ -135,8 +139,9 @@ export default class AbstractIndicator implements IIndicator {
    * @param {string[]} order
    * @returns {string/null}
    */
-  static getLowestStatus (deps: any, order:any=[]) {
-    return minBy(toArray(deps), dep => order.indexOf(dep.getStatus())).getStatus()
+  static getLowestStatus (deps: IIndicatorDeps, order: string[]=[]): string {
+    const depsArray: IIndicator[] = toArray(deps)
+    return minBy(depsArray, dep => order.indexOf(dep.getStatus())).getStatus()
   }
 
   /**
@@ -144,7 +149,9 @@ export default class AbstractIndicator implements IIndicator {
    * @param {string[]} order
    * @returns {string/null}
    */
-  static getHighestStatus (deps: any, order:any=[]) {
-    return maxBy(toArray(deps), dep => order.indexOf(dep.getStatus())).getStatus()
+  static getHighestStatus (deps: IIndicatorDeps, order: string[]=[]): string {
+    const depsArray: IIndicator[] = toArray(deps)
+    return maxBy(depsArray, dep => order.indexOf(dep.getStatus())).getStatus()
   }
 }
+

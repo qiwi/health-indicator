@@ -12,6 +12,7 @@ pids
 *.pid.lock
 
 # Coverage
+flow-coverage
 lib-cov
 coverage
 .nyc_output
