@@ -37,7 +37,7 @@
     "lodash-es": "^4.17.5"
   },
   "devDependencies": {
-    "@std/esm": "^0.23.2",
+    "@std/esm": "^0.23.4",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-plugin-transform-class-properties": "^6.24.1",

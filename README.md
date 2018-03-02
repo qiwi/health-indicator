@@ -1,16 +1,16 @@
 # Health indicator
 
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
-![buildStatus](https://travis-ci.org/qiwi/health-indicator.svg?branch=master)
-![coverage](https://coveralls.io/repos/qiwi/health-indicator/badge.svg)
-![deps](https://david-dm.org/qiwi/health-indicator.svg)
-![devDeps](https://david-dm.org/qiwi/health-indicator/dev-status.svg)
+[![buildStatus](https://img.shields.io/travis/qiwi/health-indicator.svg?maxAge=1000&branch=master)](https://travis-ci.org/qiwi/health-indicator)
+[![Coveralls](https://img.shields.io/coveralls/qiwi/health-indicator.svg?maxAge=1000)](https://coveralls.io/github/qiwi/health-indicator)
+[![dependencyStatus](https://img.shields.io/david/qiwi/health-indicator.svg?maxAge=1000)](https://david-dm.org/qiwi/health-indicator)
+[![devDependencyStatus](https://img.shields.io/david/dev/qiwi/health-indicator.svg?maxAge=1000)](https://david-dm.org/qiwi/health-indicator)
 
 
 Health indicator kit for server-side monitoring and balancing.
 Inspired by [Part V. Spring Boot Actuator: Production-ready feature 47.6.2 Writing custom HealthIndicators](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html)
 
-```
+```javascript
     import express from 'express'
     import {SemaphoreIndicator, Endpoint} from 'health-indicator'
     
@@ -32,7 +32,7 @@ Inspired by [Part V. Spring Boot Actuator: Production-ready feature 47.6.2 Writi
 ```
 
 Indicator composes aggregator logic, so its health status may be resolved from deps.
-```
+```javascript
     const dep1 = new SemaphoreIndicator({status: 'RED', critical: true})
     const dep2 = new SemaphoreIndicator({status: 'GREEN'})
     const dep3 = new SemaphoreIndicator({deps: {dep1, dep2}})
@@ -62,7 +62,7 @@ Indicator composes aggregator logic, so its health status may be resolved from d
 ```
 
 To declare any CustomIncicator you may simply extend the AbstractClass
-```
+```javascript
 // @flow
 
 import AbstractIndicator from './abstract'
