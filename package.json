@@ -14,6 +14,7 @@
   "scripts": {
     "flow": "flow",
     "flow_coverage": "flow-coverage-report -i 'src/**/*.js' -t html -t json -t text --threshold 90",
+    "fetch_libdefs": "flow-typed install lodash@4.17.10",
     "lint": "standard-flow src/**/*.js test/**/*.js",
     "mocha": "nyc mocha --opts .mocha.opts",
     "test": "npm run flow_coverage && npm run lint && npm run mocha",
@@ -34,7 +35,7 @@
   "author": "Anton Golub <a.golub@qiwi.com>",
   "license": "MIT",
   "dependencies": {
-    "lodash-es": "^4.17.10"
+    "lodash": "^4.17.10"
   },
   "devDependencies": {
     "@std/esm": "^0.26.0",
@@ -56,6 +57,7 @@
     "flow-bin": "^0.73.0",
     "flow-coverage-report": "^0.5.0",
     "flow-remove-types": "^1.2.3",
+    "flow-typed": "^2.4.0",
     "glob": "^7.1.2",
     "mocha": "^5.2.0",
     "nyc": "^11.8.0",

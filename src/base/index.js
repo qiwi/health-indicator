@@ -6,15 +6,15 @@ export {
   maxBy,
   each,
   find,
-  filter,
   isEmpty,
   isUndefined,
   isObject,
   isString,
   isFunction,
   mapValues,
-  toArray
-} from 'lodash-es'
+  toArray,
+  pickBy
+} from 'lodash'
 
 export function isDefined (value ?: any): boolean {
   return value !== undefined

@@ -3,7 +3,5 @@
 ./src/indicator
 
 [ignore]
-node_modules/.*
 
 [libs]
-./definitions/

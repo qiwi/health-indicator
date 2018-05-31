@@ -1,7 +1,7 @@
 // @flow
 
 import Health from '../health'
-import {mapValues, find, minBy, maxBy, filter, toArray, isEmpty, isDefined} from '../base'
+import {mapValues, find, minBy, maxBy, toArray, isEmpty, isDefined, pickBy} from '../base'
 import type {IIndicator, IIndicatorOpts, IIndicatorDeps, IHttpMap, IStatusMap} from './interface'
 import type {IHealth, IHealthDeps, IHealthExtra} from '../health/interface'
 
@@ -126,7 +126,7 @@ export default class AbstractIndicator implements IIndicator {
       return def
     }
 
-    const criticalDeps: IIndicatorDeps = filter(deps, dep => dep.getCritical())
+    const criticalDeps: IIndicatorDeps = pickBy(deps, dep => dep.getCritical())
     if (!isEmpty(criticalDeps)) {
       return this.getLowestStatus(criticalDeps, order)
     }
