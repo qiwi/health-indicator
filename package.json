@@ -61,6 +61,7 @@
     "glob": "^7.1.2",
     "mocha": "^5.2.0",
     "nyc": "^12.0.2",
+    "reqresnext": "^1.4.1",
     "standard-flow": "^1.0.0"
   },
   "standard-flow": {

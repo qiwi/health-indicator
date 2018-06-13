@@ -1,6 +1,6 @@
 import chai from 'chai'
 import spies from 'chai-spies'
-import reqres from './reqres'
+import reqresnext from 'reqresnext'
 import Endpoint from '../../src/middleware'
 import {SemaphoreIndicator} from '../../src/indicator'
 
@@ -30,7 +30,7 @@ describe('Endpoint', () => {
         const health = indicator.health()
         const status = health.status
         const httpCode = SemaphoreIndicator.getHttpCode(status)
-        const {req, res, next} = reqres()
+        const {req, res, next} = reqresnext()
 
         endpoint.middleware(req, res, next)
         expect(res.statusCode).to.equal(httpCode)
@@ -40,7 +40,7 @@ describe('Endpoint', () => {
       it('returns error if health() throws exception', () => {
         const indicator = new SemaphoreIndicator()
         const endpoint = new Endpoint(indicator)
-        const {req, res, next} = reqres()
+        const {req, res, next} = reqresnext()
 
         indicator.health = () => {
           throw new Error('Foo')
