@@ -25,6 +25,7 @@ dist
 node_modules/
 jspm_packages/
 typings/
+flow-typed/npm/
 
 .npm
 .eslintcache

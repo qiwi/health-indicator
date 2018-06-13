@@ -61,7 +61,7 @@ Indicator composes aggregator logic, so its health status may be resolved from d
     */
 ```
 
-To declare any CustomIncicator you may simply extend the AbstractClass
+To declare any CustomIndicator you may simply extend the AbstractClass
 ```javascript
 // @flow
 
@@ -100,5 +100,4 @@ export default class SemaphoreIndicator extends AbstractIndicator {
     return SEVERITY_ORDER
   }
 }
-
 ```

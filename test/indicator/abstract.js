@@ -78,7 +78,8 @@ describe('AbstractIndicator', () => {
       }
 
       expect(AbstractIndicator.getLowestStatus(deps, order)).to.equal(down)
-      expect(AbstractIndicator.getLowestStatus(deps)).to.equal(down)
+      expect(AbstractIndicator.getLowestStatus(deps)).to.equal(unknown) // NOTE default order is ['UNDEFINED']
+      expect(AbstractIndicator.getLowestStatus(deps, [unknown, up, down])).to.equal(unknown)
     })
 
     it('`getHighestStatus` selects the highest', () => {

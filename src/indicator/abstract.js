@@ -7,6 +7,7 @@ import type {IHealth, IHealthDeps, IHealthExtra} from '../health/interface'
 
 export const UNKNOWN = 'UNKNOWN'
 export const DEFAULT_HTTP_CODE = 200
+export const SEVERITY_ORDER = [UNKNOWN]
 
 /**
  * Abstract indicator class
@@ -90,7 +91,7 @@ export default class AbstractIndicator implements IIndicator {
   }
 
   static getSeverityOrder (): string[] {
-    return [UNKNOWN]
+    return SEVERITY_ORDER
   }
 
   static getStatusMap (): IStatusMap {
@@ -136,22 +137,38 @@ export default class AbstractIndicator implements IIndicator {
 
   /**
    * @param {IIndicatorDeps} deps
-   * @param {string[]} order
+   * @param {string[]=SEVERITY_ORDER} order
    * @returns {string/null}
    */
-  static getLowestStatus (deps: IIndicatorDeps, order: string[]=[]): string {
+  static getLowestStatus (deps: IIndicatorDeps, order: string[]): string {
     const depsArray: IIndicator[] = toArray(deps)
-    return minBy(depsArray, dep => order.indexOf(dep.getStatus())).getStatus()
+    const _order = order || this.getSeverityOrder()
+
+    return minBy(depsArray, dep => {
+      const index = _order.indexOf(dep.getStatus())
+
+      return index === -1
+        ? Infinity
+        : index
+    }).getStatus()
   }
 
   /**
    * @param {IIndicatorDeps} deps
-   * @param {string[]} order
+   * @param {string[]=SEVERITY_ORDER} order
    * @returns {string/null}
    */
-  static getHighestStatus (deps: IIndicatorDeps, order: string[]=[]): string {
+  static getHighestStatus (deps: IIndicatorDeps, order: string[]): string {
     const depsArray: IIndicator[] = toArray(deps)
-    return maxBy(depsArray, dep => order.indexOf(dep.getStatus())).getStatus()
+    const _order = order || this.getSeverityOrder()
+
+    return maxBy(depsArray, dep => {
+      const index = _order.indexOf(dep.getStatus())
+
+      return index === -1
+        ? -Infinity
+        : index
+    }).getStatus()
   }
 }
 
