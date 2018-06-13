@@ -8,5 +8,12 @@ install:
   - npm install
   - npm run fetch_libdefs
   - npm build
+
 script:
-  - npm run coveralls
+  - npm run test_with_report
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script:
+    - npx semantic-release
