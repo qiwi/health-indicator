@@ -18,10 +18,6 @@ export const DEFAULT_HTTP_CODE = OK
 export const HTTP_MAP = {[UP]: OK, [DOWN]: SERVICE_UNAVAILABLE, [OUT_OF_SERVICE]: SERVICE_UNAVAILABLE}
 
 export default class StandardIndicator extends AbstractIndicator {
-  static getDefaultStatus (): string {
-    return UNKNOWN
-  }
-
   static getDefaultHttpCode (): number {
     return DEFAULT_HTTP_CODE
   }
