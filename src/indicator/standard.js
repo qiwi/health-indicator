@@ -11,14 +11,13 @@ export const OUT_OF_SERVICE = 'OUT_OF_SERVICE'
 export const STATUS_MAP = {UP, UNKNOWN, DOWN, OUT_OF_SERVICE}
 export const SEVERITY_ORDER = [DOWN, OUT_OF_SERVICE, UNKNOWN, UP]
 
-export const DEFAULT_HTTP_CODE = OK
-export const HTTP_MAP = {[UP]: OK, [DOWN]: SERVICE_UNAVAILABLE, [OUT_OF_SERVICE]: SERVICE_UNAVAILABLE}
+export const HTTP_MAP = {
+  [UP]: OK,
+  [DOWN]: SERVICE_UNAVAILABLE,
+  [OUT_OF_SERVICE]: SERVICE_UNAVAILABLE
+}
 
 export default class StandardIndicator extends AbstractIndicator {
-  static getDefaultHttpCode (): number {
-    return DEFAULT_HTTP_CODE
-  }
-
   static getHttpMap (): IHttpMap {
     return HTTP_MAP
   }

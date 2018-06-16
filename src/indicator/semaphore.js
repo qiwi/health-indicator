@@ -9,16 +9,16 @@ export const BROKEN = 'BROKEN'
 export const STATUS_MAP = {GREEN, BROKEN, RED}
 export const SEVERITY_ORDER = [RED, BROKEN, GREEN]
 
-export const DEFAULT_HTTP_CODE = OK
-export const HTTP_MAP = {[GREEN]: OK, [RED]: SERVICE_UNAVAILABLE, [BROKEN]: SERVICE_UNAVAILABLE}
+export const DEFAULT_STATUS = BROKEN
+export const HTTP_MAP = {
+  [GREEN]: OK,
+  [RED]: SERVICE_UNAVAILABLE,
+  [BROKEN]: SERVICE_UNAVAILABLE
+}
 
 export default class SemaphoreIndicator extends AbstractIndicator {
   static getDefaultStatus (): string {
-    return BROKEN
-  }
-
-  static getDefaultHttpCode (): number {
-    return DEFAULT_HTTP_CODE
+    return DEFAULT_STATUS
   }
 
   static getHttpMap (): Object {

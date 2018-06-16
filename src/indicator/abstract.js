@@ -7,8 +7,12 @@ import type {IIndicator, IIndicatorOpts, IIndicatorDeps, IHttpMap, IStatusMap} f
 import type {IHealth, IHealthDeps, IHealthExtra} from '../health/interface'
 
 export const UNKNOWN = 'UNKNOWN'
+export const DEFAULT_STATUS = UNKNOWN
 export const DEFAULT_HTTP_CODE = OK
 export const SEVERITY_ORDER = [UNKNOWN]
+export const HTTP_MAP = {
+  [UNKNOWN]: DEFAULT_HTTP_CODE
+}
 
 /**
  * Abstract indicator class
@@ -88,7 +92,7 @@ export default class AbstractIndicator implements IIndicator {
   }
 
   static getDefaultStatus (): string {
-    return UNKNOWN
+    return DEFAULT_STATUS
   }
 
   static getSeverityOrder (): string[] {
@@ -101,9 +105,7 @@ export default class AbstractIndicator implements IIndicator {
 
   // TODO separate to endpoint class
   static getHttpMap (): IHttpMap {
-    return {
-      [UNKNOWN]: DEFAULT_HTTP_CODE
-    }
+    return HTTP_MAP
   }
 
   static getDefaultHttpCode (): number {
@@ -172,4 +174,3 @@ export default class AbstractIndicator implements IIndicator {
     }).getStatus()
   }
 }
-
