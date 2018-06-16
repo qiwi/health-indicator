@@ -2,6 +2,7 @@
 
 import type {IEndpoint, IRequest, IResponse, INext} from './interface'
 import type {IIndicator} from '../indicator/interface'
+import {INTERNAL_SERVER_ERROR} from '../endpoint/statuses'
 
 export default class Endpoint implements IEndpoint {
   indicator: IIndicator
@@ -32,7 +33,7 @@ export default class Endpoint implements IEndpoint {
     } catch (e) {
       // TODO handle, log, etc.
       res
-        .status(500)
+        .status(INTERNAL_SERVER_ERROR)
         .send({error: 'Health check obtain failed'})
     }
   }

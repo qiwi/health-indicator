@@ -1,11 +1,8 @@
 // @flow
 
 import AbstractIndicator from './abstract'
+import {OK, SERVICE_UNAVAILABLE} from '../endpoint/statuses'
 import type {IStatusMap, IHttpMap} from './interface'
-
-// TODO move to endpoint
-const OK = 200
-const SERVICE_UNAVAILABLE = 503
 
 export const UP = 'UP'
 export const DOWN = 'DOWN'

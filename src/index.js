@@ -1,6 +1,6 @@
 // @flow
 
-import Endpoint from './middleware'
+import Endpoint from './endpoint'
 
 export {AbstractIndicator, SemaphoreIndicator, StandardIndicator} from './indicator';
 export {Endpoint}

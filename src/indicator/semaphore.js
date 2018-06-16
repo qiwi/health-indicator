@@ -1,10 +1,7 @@
 // @flow
 
 import AbstractIndicator from './abstract'
-
-// TODO move to endpoint
-const OK = 200
-const SERVICE_UNAVAILABLE = 503
+import {OK, SERVICE_UNAVAILABLE} from '../endpoint/statuses'
 
 export const GREEN = 'GREEN'
 export const RED = 'RED'

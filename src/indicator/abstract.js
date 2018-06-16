@@ -1,12 +1,13 @@
 // @flow
 
 import Health from '../health'
+import {OK} from '../endpoint/statuses'
 import {mapValues, find, minBy, maxBy, toArray, isEmpty, isDefined, pickBy} from '../base'
 import type {IIndicator, IIndicatorOpts, IIndicatorDeps, IHttpMap, IStatusMap} from './interface'
 import type {IHealth, IHealthDeps, IHealthExtra} from '../health/interface'
 
 export const UNKNOWN = 'UNKNOWN'
-export const DEFAULT_HTTP_CODE = 200
+export const DEFAULT_HTTP_CODE = OK
 export const SEVERITY_ORDER = [UNKNOWN]
 
 /**

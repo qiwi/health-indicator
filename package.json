@@ -1,12 +1,17 @@
 {
-  "name": "health-indicator",
+  "name": "@qiwi/health-indicator",
   "version": "0.0.1",
   "description": "Health indicator kit for server-side monitoring & balancing",
-  "main": "scr/index",
+  "main": "dist/index",
   "directories": {
     "source": "src",
     "test": "test"
   },
+  "files": [
+    "README.md",
+    "CHANGELOG.md",
+    "dist/"
+  ],
   "@std/esm": {
     "mode": "all",
     "cjs": true
@@ -37,6 +42,7 @@
   "author": "Anton Golub <a.golub@qiwi.com>",
   "license": "MIT",
   "dependencies": {
+    "http-status-codes": "^1.3.0",
     "lodash": "^4.17.10"
   },
   "devDependencies": {
