@@ -6,26 +6,32 @@
 [![dependencyStatus](https://img.shields.io/david/qiwi/health-indicator.svg?maxAge=1000)](https://david-dm.org/qiwi/health-indicator)
 [![devDependencyStatus](https://img.shields.io/david/dev/qiwi/health-indicator.svg?maxAge=1000)](https://david-dm.org/qiwi/health-indicator)
 
-
 Health indicator kit for server-side monitoring and balancing.
 Inspired by [Part V. Spring Boot Actuator: Production-ready feature 47.6.2 Writing custom HealthIndicators](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html)
 
+## Install
+```bash
+    npm i @qiwi/health-indicator
+    yarn add @qiwi/health-indicator
+```
+
+## Usage
 ```javascript
     import express from 'express'
-    import {SemaphoreIndicator, Endpoint} from 'health-indicator'
+    import {SemaphoreIndicator, Endpoint} from '@qiwi/health-indicator'
     
     const app = express()
     const indicator = new SemaphoreIndicator()
     const endpoint = new Endpoint(indicator)
     
     
-    // Override 'getStatus' impl with your business logic accordance
+    // Override 'getStatus' impl in accordance with your business logic
     indicator.getStatus = () => {
         ...
         return 'GREEN'
     }
-    // ... or better vis class MyIndicator extends SemaphoreIndicator {...}
-    // ... or use direct set for indicator status property
+    // ... or use separate class MyIndicator extends SemaphoreIndicator {...}
+    // ... or just directly set indicator status property
     indicator.status = 'RED'
     
     app.get('/health', endpoint.middleware)  
@@ -57,15 +63,12 @@ Indicator composes aggregator logic, so its health status may be resolved from d
                }
            }       
        }
-
     */
 ```
 
 To declare any CustomIndicator you may easily extend the AbstractClass
 ```javascript
-// @flow
-
-import AbstractIndicator from './abstract'
+import {AbstractIndicator} from '@qiwi/health-indicator'
 
 const OK = 200
 const SERVICE_UNAVAILABLE = 503
