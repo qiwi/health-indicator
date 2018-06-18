@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/qiwi/health-indicator/compare/v1.1.0...v1.1.1) (2018-06-18)
+
+
+### Bug Fixes
+
+* **package:** fix path to entry point ([b882c20](https://github.com/qiwi/health-indicator/commit/b882c20))
+
 # [1.1.0](https://github.com/qiwi/health-indicator/compare/v1.0.1...v1.1.0) (2018-06-18)
 
 
