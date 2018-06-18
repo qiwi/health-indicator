@@ -7,7 +7,7 @@ before_install:
 install:
   - npm install
   - npm run fetch_libdefs
-  - npm build
+  - npm run build
 
 script:
   - npm run test_with_report
