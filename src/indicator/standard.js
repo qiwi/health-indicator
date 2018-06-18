@@ -2,7 +2,7 @@
 
 import AbstractIndicator from './abstract'
 import {OK, SERVICE_UNAVAILABLE} from '../endpoint/statuses'
-import type {IStatusMap, IHttpMap} from './interface'
+import type {IStatusMap, IHttpMap, IIndicator, IIndicatorStatics} from './interface'
 
 export const UP = 'UP'
 export const DOWN = 'DOWN'
@@ -17,7 +17,7 @@ export const HTTP_MAP = {
   [OUT_OF_SERVICE]: SERVICE_UNAVAILABLE
 }
 
-export default class StandardIndicator extends AbstractIndicator {
+export default class StandardIndicator extends AbstractIndicator implements IIndicator {
   static getHttpMap (): IHttpMap {
     return HTTP_MAP
   }
@@ -30,3 +30,4 @@ export default class StandardIndicator extends AbstractIndicator {
     return SEVERITY_ORDER
   }
 }
+(StandardIndicator: IIndicatorStatics)

@@ -3,7 +3,7 @@
 import Health from '../health'
 import {OK} from '../endpoint/statuses'
 import {mapValues, find, minBy, maxBy, toArray, isEmpty, isDefined, pickBy} from '../base'
-import type {IIndicator, IIndicatorOpts, IIndicatorDeps, IHttpMap, IStatusMap} from './interface'
+import type {IIndicator, IIndicatorOpts, IIndicatorDeps, IHttpMap, IStatusMap, IIndicatorStatics} from './interface'
 import type {IHealth, IHealthDeps, IHealthExtra} from '../health/interface'
 
 export const UNKNOWN = 'UNKNOWN'
@@ -174,3 +174,4 @@ export default class AbstractIndicator implements IIndicator {
     }).getStatus()
   }
 }
+(AbstractIndicator: IIndicatorStatics)

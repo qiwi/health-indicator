@@ -3,22 +3,29 @@
 import type {IHealth, IHealthExtra} from '../health/interface'
 
 export interface IIndicator {
-  critical: boolean | void;
-  status: string | void;
-  deps: IIndicatorDeps;
-  extra: IHealthExtra;
-
-  constructor(opts: IIndicatorOpts): IIndicator;
-
-  health(): IHealth;
-
-  getCritical(): boolean;
-
-  getStatus(): string;
-
-  getDeps(): IIndicatorDeps | void;
-
-  getExtra(): any;
+  critical: boolean | void,
+  status: string | void,
+  deps: IIndicatorDeps,
+  extra: IHealthExtra,
+  constructor(opts: IIndicatorOpts): IIndicator,
+  health(): IHealth,
+  getCritical(): boolean,
+  getStatus(): string,
+  getDeps(): IIndicatorDeps | void,
+  getExtra(): any
+}
+// WTF is going on: https://github.com/facebook/flow/pull/3994
+export interface IIndicatorStatics {
+  getDefaultStatus(): string,
+  getSeverityOrder(): string[],
+  getStatusMap(): IStatusMap,
+  getHttpMap(): IHttpMap,
+  getDefaultHttpCode(): number,
+  getHttpCode(status: string): number,
+  resolveCritical(deps:? IIndicatorDeps): boolean,
+  resolveStatus(deps:? IIndicatorDeps, order: string[], def: string): string,
+  getLowestStatus(deps: IIndicatorDeps, order: string[]): string,
+  getHighestStatus(deps: IIndicatorDeps, order: string[]): string
 }
 
 export type IIndicatorOpts = {
