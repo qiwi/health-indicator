@@ -1,6 +1,6 @@
 // @flow
 
-import type {IEndpoint, IRequest, IResponse, INext} from './interface'
+import type {IEndpoint, IResponse, IRequest} from './interface'
 import type {IIndicator} from '../indicator/interface'
 import {INTERNAL_SERVER_ERROR} from '../endpoint/statuses'
 
@@ -15,26 +15,27 @@ export default class Endpoint implements IEndpoint {
 
     return this
   }
-  middleware (req: IRequest, res: IResponse, next: INext) {
+  middleware (req: IRequest, res: IResponse, next?: Function) {
     try {
       const health = this.indicator.health()
       const status = health.status
 
       // https://github.com/facebook/flow/issues/2048
       // $FlowFixMe
-      const httpCode: number = this.indicator.constructor.getHttpCode(status) // TODO separate mapping
+      const httpCode: string = this.indicator.constructor.getHttpCode(status) // TODO separate mapping
 
-      res
-        .status(httpCode)
-        .send(health)
+      this.constructor.send(res, httpCode, health)
 
     // type annotations for catch params not yet supported
     // $FlowFixMe
     } catch (e) {
       // TODO handle, log, etc.
-      res
-        .status(INTERNAL_SERVER_ERROR)
-        .send({error: 'Health check obtain failed'})
+      this.constructor.send(res, INTERNAL_SERVER_ERROR, {error: 'Health check obtain failed'})
     }
+  }
+
+  static send (res: IResponse, code: string | number, data: Object) {
+    res.writeHead(+code, {'Content-Type': 'application/json'})
+    res.end(JSON.stringify(data))
   }
 }

@@ -1,32 +1,21 @@
 // @flow
 
-interface Send {
-  (status: number, body:? any): IResponse;
-  (body:? any): IResponse;
+import type {IIndicator} from '../indicator/interface'
+
+type IAny = any
+
+export type IHeaders = {
+  [key: string]: string | string[]
 }
 
-export interface INext {
-  (err:? any): void;
-}
-
-export interface IMiddleware {
-  (req: Object, res:? Object, next:? INext): any;
-}
-
-export interface IRequest {
-  query: Object,
-  params: Object,
-  body: Object,
-  principal:? any,
-  session:? any
-}
+export type IRequest = IAny
 
 export interface IResponse {
-  send: Send,
-  status(code: number): IResponse,
+  writeHead(code: number, IHeaders) : IAny,
+  end(data?: string, encoding?: string, cb?: Function): IResponse
 }
 
 export interface IEndpoint {
-  constructor(indicator: any): IEndpoint;
-  middleware(req: IRequest, res: IResponse, next: INext): any;
+  constructor(indicator: IIndicator): IEndpoint;
+  middleware(req: IRequest, res: IResponse, next?: Function): IAny;
 }

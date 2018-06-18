@@ -10,7 +10,7 @@ export default class Health implements IHealth {
   $key: any;
   $value: any;
 
-  constructor ({status, critical, deps, extra}: IHealthOpts) {
+  constructor ({status, critical, deps, extra}: IHealthOpts): IHealth {
     if (extra) {
       extend(this, extra)
     }

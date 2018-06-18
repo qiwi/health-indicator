@@ -1,4 +1,5 @@
 import {IHttpMap, IIndicatorDeps, IStatusMap} from "../src/indicator/interface"
+import {IHeaders, IResponse} from "../src/endpoint/interface"
 
 declare module '@qiwi/health-indicator' {
   declare interface IHealth {
@@ -23,24 +24,15 @@ declare module '@qiwi/health-indicator' {
   declare type IHealthExtra = {
     [key: string]: any
   } | void
-  
-  declare interface ISend {
-    (status: number, body: ? any): IResponse;
-    (body: ? any): IResponse;
-  }
-  
-  declare interface IMiddleware {
-    (req: any, res: IResponse, next?: Function): any;
-  }
-  
+
   declare interface IResponse {
-    send: ISend,
-    status(code: number): IResponse,
+    writeHead(code: string, IHeaders) : any,
+    end(data?: string, encoding?: string, cb?: Function): IResponse
   }
   
   declare interface IEndpoint {
-    constructor(indicator: IIndicator): IEndpoint;
-    middleware: IMiddleware;
+    constructor(indicator: IIndicator): IEndpoint,
+    middleware(req: any, res: IResponse, next?: Function): any
   }
   
   declare interface IIndicator {
@@ -89,8 +81,8 @@ declare module '@qiwi/health-indicator' {
   }
 
   declare class Endpoint implements IEndpoint {
-    constructor(indicator: IIndicator): IEndpoint;
-    middleware: IMiddleware
+    constructor(indicator: IIndicator): IEndpoint,
+    middleware(req: any, res: IResponse, next?: Function): any
   }
 
   declare class AbstractIndicator implements IIndicator {
