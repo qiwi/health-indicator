@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/qiwi/health-indicator/compare/v1.1.1...v1.2.0) (2018-06-19)
+
+
+### Features
+
+* support IPrimitiveIndicator as a part of IIndicator deps ([fac6b76](https://github.com/qiwi/health-indicator/commit/fac6b76))
+
 ## [1.1.1](https://github.com/qiwi/health-indicator/compare/v1.1.0...v1.1.1) (2018-06-18)
 
 
