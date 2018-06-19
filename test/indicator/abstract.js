@@ -21,6 +21,10 @@ describe('AbstractIndicator', () => {
       expect(AbstractIndicator.getDefaultStatus()).to.be.a('string')
     })
 
+    it('`getDefaultCritical` returns proper bool', () => {
+      expect(AbstractIndicator.getDefaultCritical()).to.be.a('boolean')
+    })
+
     it('`getSeverityOrder` returns status list', () => {
       expect(AbstractIndicator.getSeverityOrder()).to.be.an('array')
     })
@@ -45,7 +49,7 @@ describe('AbstractIndicator', () => {
       expect(AbstractIndicator.getHttpCode(defaultStatus)).to.equal(defaultCode)
     })
 
-    describe('resolveCritical', () => {
+    describe('resolveCriticalFromDeps', () => {
       it('returns true if finds critical dep at any level', () => {
         const critical = true
         const deps = {
@@ -59,11 +63,11 @@ describe('AbstractIndicator', () => {
             }
           })
         }
-        expect(AbstractIndicator.resolveCritical(deps)).to.be.true
+        expect(AbstractIndicator.resolveCriticalFromDeps(deps, false)).to.be.true
       })
 
       it('returns false otherwise', () => {
-        expect(AbstractIndicator.resolveCritical()).to.be.false
+        expect(AbstractIndicator.resolveCriticalFromDeps({}, false)).to.be.false
       })
     })
 
@@ -100,7 +104,7 @@ describe('AbstractIndicator', () => {
       expect(AbstractIndicator.getHighestStatus(deps)).to.equal(red)
     })
 
-    describe('resolveStatus', () => {
+    describe('resolveStatusFromDeps', () => {
       const red = 'RED'
       const yellow = 'YELLOW'
       const green = 'GREEN'
@@ -115,9 +119,16 @@ describe('AbstractIndicator', () => {
             deps: {
               dep3: new CustomIndicator({status: yellow, critical})
             }
-          })
+          }),
+          dep4: {health () {
+            return {
+              status: green,
+              critical
+            }
+          }}
+
         }
-        expect(AbstractIndicator.resolveStatus(deps, order)).to.equal(yellow)
+        expect(AbstractIndicator.resolveStatusFromDeps(deps, order)).to.equal(yellow)
       })
 
       it('returns the highest non-critical', () => {
@@ -135,11 +146,11 @@ describe('AbstractIndicator', () => {
             }
           })
         }
-        expect(AbstractIndicator.resolveStatus(deps, order)).to.equal(green)
+        expect(AbstractIndicator.resolveStatusFromDeps(deps, order)).to.equal(green)
       })
 
       it('otherwise returns default if no dep specified', () => {
-        expect(AbstractIndicator.resolveStatus({}, order, 'foo')).to.equal('foo')
+        expect(AbstractIndicator.resolveStatusFromDeps({}, order, 'foo')).to.equal('foo')
       })
     })
   })

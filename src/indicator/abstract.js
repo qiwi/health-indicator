@@ -7,6 +7,7 @@ import type {IIndicator, IIndicatorOpts, IIndicatorDeps, IHttpMap, IStatusMap, I
 import type {IHealth, IHealthDeps, IHealthExtra} from '../health/interface'
 
 export const UNKNOWN = 'UNKNOWN'
+export const DEFAULT_CRITICAL = false
 export const DEFAULT_STATUS = UNKNOWN
 export const DEFAULT_HTTP_CODE = OK
 export const SEVERITY_ORDER = [UNKNOWN]
@@ -67,16 +68,25 @@ export default class AbstractIndicator implements IIndicator {
       return this.status
     }
 
-    return this.constructor.resolveStatus(this.deps, [], this.constructor.getDefaultStatus())
+    return this.constructor.resolveStatusFromDeps(
+      this.getDeps(),
+      this.constructor.getSeverityOrder(),
+      this.constructor.getDefaultStatus()
+    )
   }
 
   /**
    * @returns {boolean}
    */
   getCritical (): boolean {
-    return isDefined(this.critical)
-      ? !!this.critical
-      : this.constructor.resolveCritical(this.getDeps())
+    if (isDefined(this.critical)) {
+      return !!this.critical
+    }
+
+    return this.constructor.resolveCriticalFromDeps(
+      this.getDeps(),
+      this.constructor.getDefaultCritical()
+    )
   }
 
   /**
@@ -93,6 +103,10 @@ export default class AbstractIndicator implements IIndicator {
 
   static getDefaultStatus (): string {
     return DEFAULT_STATUS
+  }
+
+  static getDefaultCritical (): boolean {
+    return DEFAULT_CRITICAL
   }
 
   static getSeverityOrder (): string[] {
@@ -121,16 +135,20 @@ export default class AbstractIndicator implements IIndicator {
   }
 
   // TODO separate resolver logic to aggregator class
-  static resolveCritical (deps:? IIndicatorDeps): boolean {
-    return !!find(deps, dep => dep.getCritical())
-  }
-
-  static resolveStatus (deps:? IIndicatorDeps, order: string[], def: string): string {
+  static resolveCriticalFromDeps (deps:? IIndicatorDeps, def: boolean): boolean {
     if (deps === undefined || deps === null || isEmpty(deps)) {
-      return def
+      return !!def
     }
 
-    const criticalDeps: IIndicatorDeps = pickBy(deps, dep => dep.getCritical())
+    return !!find(deps, dep => dep.health().critical)
+  }
+
+  static resolveStatusFromDeps (deps:? IIndicatorDeps, order: string[], def: string): string {
+    if (deps === undefined || deps === null || isEmpty(deps)) {
+      return '' + def
+    }
+
+    const criticalDeps: IIndicatorDeps = pickBy(deps, dep => dep.health().critical)
     if (!isEmpty(criticalDeps)) {
       return this.getLowestStatus(criticalDeps, order)
     }
@@ -148,12 +166,12 @@ export default class AbstractIndicator implements IIndicator {
     const _order = order || this.getSeverityOrder()
 
     return minBy(depsArray, dep => {
-      const index = _order.indexOf(dep.getStatus())
+      const index = _order.indexOf(dep.health().status)
 
       return index === -1
         ? Infinity
         : index
-    }).getStatus()
+    }).health().status
   }
 
   /**
@@ -166,12 +184,12 @@ export default class AbstractIndicator implements IIndicator {
     const _order = order || this.getSeverityOrder()
 
     return maxBy(depsArray, dep => {
-      const index = _order.indexOf(dep.getStatus())
+      const index = _order.indexOf(dep.health().status)
 
       return index === -1
         ? -Infinity
         : index
-    }).getStatus()
+    }).health().status
   }
 }
 (AbstractIndicator: IIndicatorStatics)

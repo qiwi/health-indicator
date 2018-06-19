@@ -2,28 +2,33 @@
 
 import type {IHealth, IHealthExtra} from '../health/interface'
 
-export interface IIndicator {
-  critical: boolean | void,
+export interface IPrimitiveIndicator {
   status: string | void,
-  deps: IIndicatorDeps,
-  extra: IHealthExtra,
+  health(): IHealth
+}
+
+export interface IIndicator extends IPrimitiveIndicator {
+  critical: boolean | void,
+  deps?: IIndicatorDeps,
+  extra?: IHealthExtra,
   constructor(opts: IIndicatorOpts): IIndicator,
-  health(): IHealth,
   getCritical(): boolean,
   getStatus(): string,
   getDeps(): IIndicatorDeps | void,
   getExtra(): any
 }
+
 // WTF is going on: https://github.com/facebook/flow/pull/3994
 export interface IIndicatorStatics {
   getDefaultStatus(): string,
+  getDefaultCritical(): boolean,
   getSeverityOrder(): string[],
   getStatusMap(): IStatusMap,
   getHttpMap(): IHttpMap,
   getDefaultHttpCode(): number,
   getHttpCode(status: string): number,
-  resolveCritical(deps:? IIndicatorDeps): boolean,
-  resolveStatus(deps:? IIndicatorDeps, order: string[], def: string): string,
+  resolveCriticalFromDeps(deps:? IIndicatorDeps, def: boolean): boolean,
+  resolveStatusFromDeps(deps:? IIndicatorDeps, order: string[], def: string): string,
   getLowestStatus(deps: IIndicatorDeps, order: string[]): string,
   getHighestStatus(deps: IIndicatorDeps, order: string[]): string
 }
@@ -36,7 +41,7 @@ export type IIndicatorOpts = {
 }
 
 export type IIndicatorDeps = {
-  [key: string]: IIndicator,
+  [key: string]: IIndicator | IPrimitiveIndicator,
 } | void
 
 export type IHttpMap = {
