@@ -4,7 +4,7 @@
 [![buildStatus](https://img.shields.io/travis/qiwi/health-indicator.svg?maxAge=1000&branch=master)](https://travis-ci.org/qiwi/health-indicator)
 [![Coveralls](https://img.shields.io/coveralls/qiwi/health-indicator.svg?maxAge=1000)](https://coveralls.io/github/qiwi/health-indicator)
 [![dependencyStatus](https://img.shields.io/david/qiwi/health-indicator.svg?maxAge=1000)](https://david-dm.org/qiwi/health-indicator)
-[![devDependencyStatus](https://img.shields.io/david/dev/qiwi/health-indicator.svg?maxAge=1000)](https://david-dm.org/qiwi/health-indicator)
+[![devDependencyStatus](https://img.shields.io/david/dev/qiwi/health-indicator.svg?maxAge=1000)](https://david-dm.org/qiwi/health-indicator) [![Greenkeeper badge](https://badges.greenkeeper.io/qiwi/health-indicator.svg)](https://greenkeeper.io/)
 
 Health indicator kit for server-side monitoring and balancing.
 Inspired by [Part V. Spring Boot Actuator: Production-ready feature 47.6.2 Writing custom HealthIndicators](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html)
