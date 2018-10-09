@@ -16,6 +16,6 @@ export {
   pickBy
 } from 'lodash-es'
 
-export function isDefined (value ?: any): boolean {
+export function isDefined (value?: any): boolean {
   return value !== undefined
 }

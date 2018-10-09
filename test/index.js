@@ -1,9 +1,9 @@
-import {AbstractIndicator, SemaphoreIndicator, StandardIndicator, Endpoint} from '../dist'
+import {AbstractIndicator, SemaphoreIndicator, StandardIndicator, Endpoint} from '../src'
 import chai from 'chai'
 
 const {expect} = chai
 
-describe('dist/index', () => {
+describe('index', () => {
   it('properly exposes its inners', () => {
     ([AbstractIndicator, SemaphoreIndicator, StandardIndicator, Endpoint]).forEach(item => {
       expect(item).not.to.be.undefined

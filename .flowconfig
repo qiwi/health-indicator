@@ -1,6 +1,5 @@
 [include]
-./src/health
-./src/indicator
+./src/
 
 [ignore]
 .*/node_modules/config-chain/test/
