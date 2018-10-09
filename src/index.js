@@ -2,5 +2,5 @@
 
 import Endpoint from './endpoint'
 
-export {AbstractIndicator, SemaphoreIndicator, StandardIndicator} from './indicator';
+export * from './indicator';
 export {Endpoint}
