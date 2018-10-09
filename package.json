@@ -19,7 +19,7 @@
   "scripts": {
     "flow": "flow",
     "flow_coverage": "flow-coverage-report -i 'src/**/*.js' -t html -t json -t text --threshold 90",
-    "fetch_libdefs": "flow-typed install lodash@4.17.10",
+    "fetch_libdefs": "flow-typed install lodash-es@4.17.11",
     "lint": "standard-flow src/**/*.js test/**/*.js",
     "mocha": "nyc mocha --opts .mocha.opts && nyc report --reporter=text-lcov > ./coverage/lcov.info",
     "test": "npm run flow_coverage && npm run lint && npm run mocha",
@@ -43,7 +43,7 @@
   "license": "MIT",
   "dependencies": {
     "http-status-codes": "^1.3.0",
-    "lodash": "^4.17.11"
+    "lodash-es": "^4.17.11"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^3.0.0",

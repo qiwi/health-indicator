@@ -14,7 +14,7 @@ export {
   mapValues,
   toArray,
   pickBy
-} from 'lodash'
+} from 'lodash-es'
 
 export function isDefined (value ?: any): boolean {
   return value !== undefined
