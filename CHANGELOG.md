@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/qiwi/health-indicator/compare/v1.2.1...v1.2.2) (2018-10-09)
+
+
+### Bug Fixes
+
+* repair public npm bundle ([613fad5](https://github.com/qiwi/health-indicator/commit/613fad5)), closes [#14](https://github.com/qiwi/health-indicator/issues/14)
+
 ## [1.2.1](https://github.com/qiwi/health-indicator/compare/v1.2.0...v1.2.1) (2018-10-09)
 
 
