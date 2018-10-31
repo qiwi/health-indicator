@@ -66,7 +66,12 @@ Indicator composes aggregator logic, so its health status may be resolved from d
     */
 ```
 
-To declare any CustomIndicator you may easily extend the AbstractClass
+### Customization
+The lib exports only a couple of indicator implementations: 
+* `StandardIndicator` (DOWN, OUT_OF_SERVICE, UNKNOWN, UP)
+* `SemaphoreIndicator` (RED, BROKEN, GREEN)
+
+To declare any `CustomIndicator` you may easily extend the `AbstractIndicator`
 ```javascript
 import {AbstractIndicator} from '@qiwi/health-indicator'
 
