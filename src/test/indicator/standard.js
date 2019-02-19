@@ -1,7 +1,7 @@
 import chai from 'chai'
 import chaiSubset from 'chai-subset'
-import {StandardIndicator, AbstractIndicator} from '../../src/indicator'
-import {STATUS_MAP, HTTP_MAP, SEVERITY_ORDER} from '../../src/indicator/standard'
+import {StandardIndicator, AbstractIndicator} from '../../main/indicator'
+import {STATUS_MAP, HTTP_MAP, SEVERITY_ORDER} from '../../main/indicator/standard'
 
 const {expect} = chai
 chai.use(chaiSubset)
