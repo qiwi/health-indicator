@@ -21,12 +21,10 @@
     "flow_coverage": "flow-coverage-report -i 'src/main/**/*.js' -t html -t json -t text --threshold 90",
     "fetch_libdefs": "flow-typed install lodash-es@4.17.11",
     "jest": "jest --config=jest.config.json",
-    "lint": "standard-flow src/**/*.js test/**/*.js",
-    "mocha": "nyc mocha --opts .mocha.opts && nyc report --reporter=text-lcov > ./coverage/lcov.info",
-    "test": "BABEL_ENV=test npm run flow_coverage && npm run lint && npm run mocha",
+    "lint": "standard-flow src/**/*.js test/**/*.js --fix",
+    "test": "BABEL_ENV=test yarn flow_coverage && yarn lint && yarn jest",
     "build": "rm -rf ./dist; BABEL_ENV=production babel src/main --out-dir dist",
-    "test_with_report": "npm test && npm run codeclimate_push && npm run coveralls_push",
-    "codeclimate_push": "codeclimate-test-reporter < ./coverage/lcov.info",
+    "test_with_report": "yarn test && yarn coveralls_push",
     "coveralls_push": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
