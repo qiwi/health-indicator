@@ -1,8 +1,9 @@
 # Health indicator
 
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 [![buildStatus](https://img.shields.io/travis/qiwi/health-indicator.svg?maxAge=1000&branch=master)](https://travis-ci.org/qiwi/health-indicator)
-[![Coveralls](https://img.shields.io/coveralls/qiwi/health-indicator.svg?maxAge=1000)](https://coveralls.io/github/qiwi/health-indicator)
+[![npm (tag)](https://img.shields.io/npm/v/@qiwi/health-indicator/latest.svg)](https://www.npmjs.com/package/@qiwi/health-indicator)
+[![Maintainability](https://api.codeclimate.com/v1/badges/92555c89dbb2ee348d0c/maintainability)](https://codeclimate.com/github/qiwi/health-indicator/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/92555c89dbb2ee348d0c/test_coverage)](https://codeclimate.com/github/qiwi/health-indicator/test_coverage)
 [![dependencyStatus](https://img.shields.io/david/qiwi/health-indicator.svg?maxAge=1000)](https://david-dm.org/qiwi/health-indicator)
 [![devDependencyStatus](https://img.shields.io/david/dev/qiwi/health-indicator.svg?maxAge=1000)](https://david-dm.org/qiwi/health-indicator) [![Greenkeeper badge](https://badges.greenkeeper.io/qiwi/health-indicator.svg)](https://greenkeeper.io/)
 
