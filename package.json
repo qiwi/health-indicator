@@ -2,7 +2,7 @@
   "name": "@qiwi/health-indicator",
   "version": "1.2.2",
   "description": "Health indicator kit for server-side monitoring & balancing",
-  "main": "dist/index.js",
+  "main": "target/es5/index.js",
   "directories": {
     "source": "src",
     "test": "test"
@@ -10,7 +10,7 @@
   "files": [
     "README.md",
     "CHANGELOG.md",
-    "dist/"
+    "target"
   ],
   "@std/esm": {
     "mode": "all",
@@ -21,9 +21,9 @@
     "flow_coverage": "flow-coverage-report -i 'src/main/**/*.js' -t html -t json -t text --threshold 90",
     "fetch_libdefs": "flow-typed install lodash-es@4.17.11",
     "jest": "jest --config=jest.config.json",
-    "lint": "standard-flow src/**/*.js test/**/*.js --fix",
+    "lint": "standard-flow src/**/*.js --fix",
     "test": "BABEL_ENV=test yarn flow_coverage && yarn lint && yarn jest",
-    "build": "rm -rf ./dist; BABEL_ENV=production babel src/main --out-dir dist",
+    "build": "rm -rf ./target; BABEL_ENV=production babel src/main/js --out-dir target/es5",
     "test_with_report": "yarn test && yarn coveralls_push",
     "coveralls_push": "cat ./coverage/lcov.info | coveralls"
   },

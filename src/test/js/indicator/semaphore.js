@@ -1,7 +1,7 @@
 import chai from 'chai'
 import chaiSubset from 'chai-subset'
-import {SemaphoreIndicator, AbstractIndicator} from '../../main/indicator'
-import {STATUS_MAP, HTTP_MAP, SEVERITY_ORDER, DEFAULT_STATUS} from '../../main/indicator/semaphore'
+import {SemaphoreIndicator, AbstractIndicator} from '../../../main/js/indicator'
+import {STATUS_MAP, HTTP_MAP, SEVERITY_ORDER, DEFAULT_STATUS} from '../../../main/js/indicator/semaphore'
 
 const {expect} = chai
 chai.use(chaiSubset)

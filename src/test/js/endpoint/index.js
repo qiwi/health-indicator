@@ -1,8 +1,8 @@
 import chai from 'chai'
 import spies from 'chai-spies'
 import reqresnext from 'reqresnext'
-import Endpoint from '../../main/endpoint'
-import {SemaphoreIndicator} from '../../main/indicator'
+import Endpoint from '../../../main/js/endpoint'
+import {SemaphoreIndicator} from '../../../main/js/indicator'
 
 chai.use(spies)
 

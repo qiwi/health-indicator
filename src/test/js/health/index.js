@@ -1,5 +1,5 @@
 import chai from 'chai'
-import Health from '../../main/health'
+import Health from '../../../main/js/health'
 
 const {expect} = chai
 

@@ -1,7 +1,7 @@
 {
   "collectCoverage": true,
   "coveragePathIgnorePatterns": [
-    "<rootDir>/src/main/interface.js"
+    "<rootDir>/src/main/js/interface.js"
   ],
   "collectCoverageFrom": [
     "<rootDir>/src/main/**/*.js"

@@ -1,4 +1,4 @@
-import {AbstractIndicator, SemaphoreIndicator, StandardIndicator, Endpoint} from '../main'
+import {AbstractIndicator, SemaphoreIndicator, StandardIndicator, Endpoint} from '../../main/js'
 import chai from 'chai'
 
 const {expect} = chai

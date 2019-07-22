@@ -1,13 +1,13 @@
 import chai from 'chai'
 import spies from 'chai-spies'
 import reqresnext from 'reqresnext'
-import {Endpoint, SemaphoreIndicator} from '../../dist'
+import {Endpoint, SemaphoreIndicator} from '../../../target/es5'
 
 chai.use(spies)
 
 const {expect} = chai
 
-describe('dist', () => {
+describe('target', () => {
   describe('Endpoint', () => {
     it('returns indicator health data as response', () => {
       const indicator = new SemaphoreIndicator()

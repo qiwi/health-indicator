@@ -1,6 +1,6 @@
 import chai from 'chai'
 import chaiSubset from 'chai-subset'
-import {AbstractIndicator} from '../../main/indicator'
+import {AbstractIndicator} from '../../../main/js/indicator'
 
 const {expect} = chai
 chai.use(chaiSubset)
