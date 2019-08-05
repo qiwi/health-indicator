@@ -4,8 +4,8 @@
   "description": "Health indicator kit for server-side monitoring & balancing",
   "main": "target/es5/index.js",
   "directories": {
-    "source": "src",
-    "test": "test"
+    "source": "src/main",
+    "test": "src/test"
   },
   "files": [
     "README.md",
@@ -69,13 +69,13 @@
     "eslint": "^6.1.0",
     "eslint-config-standard": "^13.0.1",
     "eslint-config-standard-flow": "^1.0.1",
-    "flow-bin": "^0.103.0",
+    "flow-bin": "^0.104.0",
     "flow-coverage-report": "^0.6.1",
-    "flow-remove-types": "^2.103.0",
-    "flow-typed": "^2.6.0",
+    "flow-remove-types": "^2.104.0",
+    "flow-typed": "^2.6.1",
     "jest": "^24.8.0",
-    "reqresnext": "^1.5.2",
-    "semantic-release": "^15.13.18",
+    "reqresnext": "^1.5.3",
+    "semantic-release": "^15.13.19",
     "standard-flow": "^1.0.0"
   },
   "release": {
