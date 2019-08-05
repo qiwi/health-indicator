@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/qiwi/health-indicator/compare/v1.2.2...v1.2.3) (2019-08-05)
+
+
+### Performance Improvements
+
+* repack as CommonJS ([a24ae87](https://github.com/qiwi/health-indicator/commit/a24ae87)), closes [#29](https://github.com/qiwi/health-indicator/issues/29)
+
 ## [1.2.2](https://github.com/qiwi/health-indicator/compare/v1.2.1...v1.2.2) (2018-10-09)
 
 
