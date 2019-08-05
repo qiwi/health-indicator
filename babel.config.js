@@ -7,7 +7,7 @@ module.exports = {
     "production": {
       "presets": [
         "@babel/preset-flow",
-        ["@babel/preset-env", {"modules": false}],
+        ["@babel/preset-env", {"modules": "commonjs"}],
         "minify"
       ],
       "plugins": [

@@ -18,9 +18,9 @@ coverage
 .nyc_output
 
 # Bundle
-build
-dist
-larget
+build/
+dist/
+target/
 
 # Deps
 node_modules/
