@@ -67,7 +67,7 @@
     "chai-subset": "^1.6.0",
     "coveralls": "^3.0.5",
     "eslint": "^6.1.0",
-    "eslint-config-standard": "^13.0.1",
+    "eslint-config-standard": "^14.0.0",
     "eslint-config-standard-flow": "^1.0.1",
     "flow-bin": "^0.104.0",
     "flow-coverage-report": "^0.6.1",
