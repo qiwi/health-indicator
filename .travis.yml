@@ -21,11 +21,11 @@ after_script:
 install:
   - yarn cache clean
   - yarn
-  - yarn fetch_libdefs
+  - yarn libdefs:fetch
 
 script:
   - yarn build
-  - yarn test_with_report
+  - yarn test:report
 
 deploy:
   provider: script

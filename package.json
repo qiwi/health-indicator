@@ -19,14 +19,14 @@
   },
   "scripts": {
     "flow": "flow",
-    "flow_coverage": "flow-coverage-report -i 'src/main/**/*.js' -t html -t json -t text --threshold 90",
-    "fetch_libdefs": "flow-typed install lodash-es@4.17.11",
+    "flow:coverage": "flow-coverage-report -i 'src/main/**/*.js' -t html -t json -t text --threshold 90",
+    "libdefs:fetch": "flow-typed install lodash-es@4.17.11",
     "jest": "jest --config=jest.config.json",
     "lint": "standard-flow src/**/*.js --fix",
-    "test": "BABEL_ENV=test yarn flow_coverage && yarn lint && yarn jest",
+    "test": "BABEL_ENV=test yarn flow:coverage && yarn lint && yarn jest",
     "build": "rm -rf ./target; BABEL_ENV=production babel src/main/js --out-dir target/es5",
-    "test_with_report": "yarn test && yarn coveralls_push",
-    "coveralls_push": "cat ./coverage/lcov.info | coveralls"
+    "test:report": "yarn test && yarn coveralls:push",
+    "coveralls:push": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
