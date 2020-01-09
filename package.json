@@ -76,7 +76,7 @@
     "flow-typed": "^2.6.1",
     "jest": "^24.9.0",
     "reqresnext": "^1.6.2",
-    "semantic-release": "^15.13.27",
+    "semantic-release": "^16.0.0",
     "standard-flow": "^1.0.0"
   },
   "release": {
