@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/qiwi/health-indicator/compare/v1.2.3...v1.2.4) (2020-02-02)
+
+
+### Performance Improvements
+
+* **package:** up deps & repack ([869d6b7](https://github.com/qiwi/health-indicator/commit/869d6b724c343c3bb8b769f8d1a8f2d7886afe00))
+
 ## [1.2.3](https://github.com/qiwi/health-indicator/compare/v1.2.2...v1.2.3) (2019-08-05)
 
 

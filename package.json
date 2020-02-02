@@ -1,6 +1,6 @@
 {
   "name": "@qiwi/health-indicator",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Health indicator kit for server-side monitoring & balancing",
   "main": "target/es5/index.js",
   "directories": {
