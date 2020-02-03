@@ -1,0 +1,13 @@
+{
+  "presets": [
+    "@babel/preset-env"
+  ],
+  "plugins": [
+  ],
+  "comments": false,
+  "env": {
+    "test": {
+      "presets": [ "@babel/preset-env" ]
+    }
+  }
+}
