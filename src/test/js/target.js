@@ -1,11 +1,5 @@
-import chai from 'chai'
-import spies from 'chai-spies'
 import reqresnext from 'reqresnext'
-import {Endpoint, SemaphoreIndicator} from '../../../target/es5'
-
-chai.use(spies)
-
-const {expect} = chai
+import { Endpoint, SemaphoreIndicator } from '../../../target/ts'
 
 describe('target', () => {
   describe('Endpoint', () => {
@@ -15,11 +9,11 @@ describe('target', () => {
       const health = indicator.health()
       const status = health.status
       const httpCode = SemaphoreIndicator.getHttpCode(status)
-      const {req, res, next} = reqresnext()
+      const { req, res, next } = reqresnext()
 
       endpoint.middleware(req, res, next)
-      expect(res.statusCode).to.equal(httpCode)
-      expect(res.body).to.equal(JSON.stringify(health))
+      expect(res.statusCode).toEqual(httpCode)
+      expect(res.body).toEqual(JSON.stringify(health))
     })
   })
 
@@ -37,7 +31,7 @@ describe('target', () => {
       indicator1.status = 'RED'
       indicator2.status = 'YELLOW'
 
-      expect(indicator.getStatus()).to.equal('RED')
+      expect(indicator.getStatus()).toEqual('RED')
     })
   })
 })
