@@ -1,4 +1,4 @@
-import Health from '../health'
+import { Health } from '../health'
 import { OK } from '../endpoint/statuses'
 import { mapValues, find, minBy, maxBy, toArray, isEmpty, isDefined, pickBy } from '../base'
 import {
@@ -202,5 +202,3 @@ export class AbstractIndicator implements IIndicator {
     })?.health().status ?? defaultStatus.toString()
   }
 }
-
-export default AbstractIndicator

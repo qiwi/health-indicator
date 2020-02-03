@@ -52,7 +52,8 @@
   "license": "MIT",
   "dependencies": {
     "http-status-codes": "^1.4.0",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "tslib": "^1.10.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",

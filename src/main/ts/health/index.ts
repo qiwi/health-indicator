@@ -1,7 +1,7 @@
 import { extend } from '../base'
 import { IHealth, IHealthOpts, IHealthDeps } from './interface'
 
-export default class Health implements IHealth {
+export class Health implements IHealth {
   status: string
   critical: boolean
   deps: IHealthDeps
