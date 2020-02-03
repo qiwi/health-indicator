@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/qiwi/health-indicator/compare/v1.2.4...v1.3.0) (2020-02-03)
+
+
+### Features
+
+* migrate to TS ([#46](https://github.com/qiwi/health-indicator/issues/46)) ([4d556e6](https://github.com/qiwi/health-indicator/commit/4d556e6c35928f2a57fa6cfc57520a9cd01b298a)), closes [#15](https://github.com/qiwi/health-indicator/issues/15) [#28](https://github.com/qiwi/health-indicator/issues/28)
+
 ## [1.2.4](https://github.com/qiwi/health-indicator/compare/v1.2.3...v1.2.4) (2020-02-02)
 
 
