@@ -1,4 +1,4 @@
-import AbstractIndicator from './abstract'
+import { AbstractIndicator } from './abstract'
 import { OK, SERVICE_UNAVAILABLE } from '../endpoint/statuses'
 import { IStatusMap, IHttpMap, IIndicator } from './interface'
 
@@ -15,7 +15,7 @@ export const HTTP_MAP = {
   [OUT_OF_SERVICE]: SERVICE_UNAVAILABLE
 }
 
-export default class StandardIndicator extends AbstractIndicator implements IIndicator {
+export class StandardIndicator extends AbstractIndicator implements IIndicator {
   static getHttpMap (): IHttpMap {
     return HTTP_MAP
   }

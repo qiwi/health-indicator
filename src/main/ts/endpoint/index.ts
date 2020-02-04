@@ -2,7 +2,7 @@ import { IEndpoint, IResponse, IRequest } from './interface'
 import { IIndicator } from '../indicator/interface'
 import { INTERNAL_SERVER_ERROR } from '../endpoint/statuses'
 
-export default class Endpoint implements IEndpoint {
+export class Endpoint implements IEndpoint {
   indicator: IIndicator
   /**
    * @see https://github.com/Microsoft/TypeScript/issues/3841#issuecomment-337560146

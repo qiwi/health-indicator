@@ -1,5 +1,5 @@
 import reqresnext from 'reqresnext'
-import Endpoint from '../../../main/ts/endpoint'
+import { Endpoint } from '../../../main/ts/endpoint'
 import { SemaphoreIndicator } from '../../../main/ts/indicator'
 
 describe('Endpoint', () => {

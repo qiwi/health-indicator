@@ -27,7 +27,7 @@
     "dtsgen": "dts-generator --project ./ --out typings/index.d.ts --prefix @qiwi/health-indicator/target/es5 --name @qiwi/health-indicator --main @qiwi/health-indicator/target/es5/index --moduleResolution node",
     "flowgen": "flowgen typings/index.d.ts --output-file flow-typed/index.flow.js",
     "libdef": "yarn dtsgen && yarn libdeffix && yarn flowgen",
-    "libdeffix": "node -r esm ./scripts/js/libdef-fix.js --dts=./typings/index.d.ts",
+    "libdeffix": "node -r esm ./scripts/js/libdef-fix.js --dts=./typings/index.d.ts --prefix=@qiwi/health-indicator/target/es5",
     "test:report": "yarn test && yarn push:report",
     "push:report": "yarn coveralls:push",
     "coveralls:push": "cat ./coverage/lcov.info | coveralls",
@@ -52,7 +52,8 @@
   "license": "MIT",
   "dependencies": {
     "http-status-codes": "^1.4.0",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "tslib": "^1.10.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",

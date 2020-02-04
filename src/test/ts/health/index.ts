@@ -1,4 +1,4 @@
-import Health from '../../../main/ts/health'
+import { Health } from '../../../main/ts/health'
 
 describe('Health', () => {
   it('constructs proper instance', () => {
