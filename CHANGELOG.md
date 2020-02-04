@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/qiwi/health-indicator/compare/v1.3.1...v1.3.2) (2020-02-04)
+
+
+### Bug Fixes
+
+* **libdef:** handle dir aliases ([fe163e8](https://github.com/qiwi/health-indicator/commit/fe163e8cdea35c26ca060f3041b0af3cde3e1a8d))
+
 ## [1.3.1](https://github.com/qiwi/health-indicator/compare/v1.3.0...v1.3.1) (2020-02-04)
 
 
