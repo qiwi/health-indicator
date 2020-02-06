@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/qiwi/health-indicator/compare/v1.3.2...v1.3.3) (2020-02-06)
+
+
+### Bug Fixes
+
+* add tslib, delete default exports ([#47](https://github.com/qiwi/health-indicator/issues/47)) ([774a09f](https://github.com/qiwi/health-indicator/commit/774a09f58705a777c4f46b654e11bfd3adcf2d04))
+
 ## [1.3.2](https://github.com/qiwi/health-indicator/compare/v1.3.1...v1.3.2) (2020-02-04)
 
 
