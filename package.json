@@ -63,7 +63,7 @@
     "@babel/plugin-transform-runtime": "^7.10.1",
     "@babel/polyfill": "^7.10.1",
     "@babel/preset-env": "^7.10.1",
-    "@babel/register": "^7.8.3",
+    "@babel/register": "^7.10.1",
     "@babel/runtime": "^7.8.4",
     "@qiwi/license": "^1.1.1",
     "@qiwi/semantic-release-gh-pages-plugin": "^1.15.8",
