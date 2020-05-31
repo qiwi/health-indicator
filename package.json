@@ -91,7 +91,7 @@
     "terser": "^4.6.3",
     "ts-jest": "^25.2.0",
     "typedoc": "0.16.9",
-    "typedoc-plugin-external-module-name": "^3.0.0",
+    "typedoc-plugin-external-module-name": "^4.0.0",
     "typescript": "^3.7.5",
     "typescript-eslint-parser": "^22.0.0"
   },
