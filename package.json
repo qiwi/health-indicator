@@ -51,7 +51,7 @@
   "author": "Anton Golub <a.golub@qiwi.com>",
   "license": "MIT",
   "dependencies": {
-    "http-status-codes": "^1.4.0",
+    "http-status-codes": "^2.0.0",
     "lodash": "^4.17.15",
     "tslib": "^1.10.0"
   },
