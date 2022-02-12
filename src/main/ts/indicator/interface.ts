@@ -1,10 +1,12 @@
+import { IConstructor } from '@qiwi/substrate'
+
 import { IHealth, IHealthExtra } from '../health/interface'
 
 export interface IPrimitiveIndicator {
   /**
    * @see https://github.com/Microsoft/TypeScript/issues/3841#issuecomment-337560146
    */
-  ['constructor']: Function & IIndicatorStatics,
+  ['constructor']: IConstructor & IIndicatorStatics,
   status: string | undefined,
 
   health (): IHealth

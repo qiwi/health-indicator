@@ -1,3 +1,7 @@
+export type IHealthDeps = {
+  [key: string]: IHealth;
+} | undefined
+
 export interface IHealth {
   status: string,
   critical: boolean,
@@ -12,10 +16,6 @@ export type IHealthOpts = {
   deps?: IHealthDeps,
   extra?: IHealthExtra,
 }
-
-export type IHealthDeps = {
-  [key: string]: IHealth;
-} | undefined
 
 export type IHealthExtra = {
   [key: string]: any

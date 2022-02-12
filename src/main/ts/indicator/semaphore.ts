@@ -1,5 +1,5 @@
-import { AbstractIndicator } from './abstract'
 import { OK, SERVICE_UNAVAILABLE } from '../endpoint/statuses'
+import { AbstractIndicator } from './abstract'
 import { IHttpMap, IIndicator, IStatusMap } from './interface'
 
 export const GREEN = 'GREEN'
@@ -12,7 +12,7 @@ export const DEFAULT_STATUS = BROKEN
 export const HTTP_MAP = {
   [GREEN]: OK,
   [RED]: SERVICE_UNAVAILABLE,
-  [BROKEN]: SERVICE_UNAVAILABLE
+  [BROKEN]: SERVICE_UNAVAILABLE,
 }
 
 export class SemaphoreIndicator extends AbstractIndicator implements IIndicator {
