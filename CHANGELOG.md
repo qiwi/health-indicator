@@ -1,3 +1,10 @@
+## [1.3.4](https://github.com/qiwi/health-indicator/compare/v1.3.3...v1.3.4) (2022-02-12)
+
+
+### Bug Fixes
+
+* up deps, fix vuls, linting ([c8c3f43](https://github.com/qiwi/health-indicator/commit/c8c3f43d9ee038655126ab052173474c4e960bad))
+
 ## [1.3.3](https://github.com/qiwi/health-indicator/compare/v1.3.2...v1.3.3) (2020-02-06)
 
 
