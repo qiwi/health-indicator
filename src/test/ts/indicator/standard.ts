@@ -1,5 +1,5 @@
-import { StandardIndicator, AbstractIndicator } from '../../../main/ts/indicator'
-import { STATUS_MAP, HTTP_MAP, SEVERITY_ORDER } from '../../../main/ts/indicator/standard'
+import { AbstractIndicator, StandardIndicator } from '../../../main/ts/indicator'
+import { HTTP_MAP, SEVERITY_ORDER, STATUS_MAP } from '../../../main/ts/indicator/standard'
 
 describe('StandardIndicator', () => {
   describe('static', () => {

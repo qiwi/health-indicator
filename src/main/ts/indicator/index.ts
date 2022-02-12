@@ -1,5 +1,5 @@
 import { AbstractIndicator } from './abstract'
-import { StandardIndicator } from './standard'
 import { SemaphoreIndicator } from './semaphore'
+import { StandardIndicator } from './standard'
 
 export { AbstractIndicator, StandardIndicator, SemaphoreIndicator }

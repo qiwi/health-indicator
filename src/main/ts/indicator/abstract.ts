@@ -1,14 +1,15 @@
-import { Health } from '../health'
+import { find, isDefined, isEmpty, mapValues, maxBy, minBy, pickBy, toArray } from '../base'
 import { OK } from '../endpoint/statuses'
-import { mapValues, find, minBy, maxBy, toArray, isEmpty, isDefined, pickBy } from '../base'
-import {
-  IIndicator,
-  IIndicatorOpts,
-  IIndicatorDeps,
-  IHttpMap,
-  IStatusMap, IIndicatorStatics
-} from './interface'
+import { Health } from '../health'
 import { IHealth, IHealthDeps, IHealthExtra } from '../health/interface'
+import {
+  IHttpMap,
+  IIndicator,
+  IIndicatorDeps,
+  IIndicatorOpts,
+  IIndicatorStatics,
+  IStatusMap,
+} from './interface'
 
 export const UNKNOWN = 'UNKNOWN'
 export const DEFAULT_CRITICAL = false
@@ -16,7 +17,7 @@ export const DEFAULT_STATUS = UNKNOWN
 export const DEFAULT_HTTP_CODE = OK
 export const SEVERITY_ORDER = [UNKNOWN]
 export const HTTP_MAP = {
-  [UNKNOWN]: DEFAULT_HTTP_CODE
+  [UNKNOWN]: DEFAULT_HTTP_CODE,
 }
 
 /**
@@ -34,7 +35,6 @@ export class AbstractIndicator implements IIndicator {
   ['constructor']: typeof AbstractIndicator & IIndicatorStatics
 
   constructor ({ critical, status, deps, extra }: IIndicatorOpts = {}) {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
     if (this.constructor === AbstractIndicator) {
       throw new Error('Abstract cannot be instantiated')
@@ -66,7 +66,7 @@ export class AbstractIndicator implements IIndicator {
       status,
       critical,
       deps,
-      extra
+      extra,
     })
   }
 
@@ -82,7 +82,7 @@ export class AbstractIndicator implements IIndicator {
     return this.constructor.resolveStatusFromDeps(
       this.getDeps(),
       this.constructor.getSeverityOrder(),
-      this.constructor.getDefaultStatus()
+      this.constructor.getDefaultStatus(),
     )
   }
 
@@ -96,7 +96,7 @@ export class AbstractIndicator implements IIndicator {
 
     return this.constructor.resolveCriticalFromDeps(
       this.getDeps(),
-      this.constructor.getDefaultCritical()
+      this.constructor.getDefaultCritical(),
     )
   }
 

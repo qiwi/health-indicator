@@ -1,5 +1,5 @@
-import { SemaphoreIndicator, AbstractIndicator } from '../../../main/ts/indicator'
-import { STATUS_MAP, HTTP_MAP, SEVERITY_ORDER, DEFAULT_STATUS } from '../../../main/ts/indicator/semaphore'
+import { AbstractIndicator, SemaphoreIndicator } from '../../../main/ts/indicator'
+import { DEFAULT_STATUS, HTTP_MAP, SEVERITY_ORDER, STATUS_MAP } from '../../../main/ts/indicator/semaphore'
 
 describe('SemaphoreIndicator', () => {
   describe('static', () => {

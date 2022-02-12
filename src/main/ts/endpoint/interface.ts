@@ -1,3 +1,5 @@
+import { IFunction } from '@qiwi/substrate'
+
 type IAny = any
 
 export type IHeaders = {
@@ -9,9 +11,9 @@ export type IRequest = IAny
 export interface IResponse {
   writeHead (code: number, headers: IHeaders): IAny,
 
-  end (data?: string, encoding?: string, cb?: Function): IResponse
+  end (data?: string, encoding?: string, cb?: IFunction | Function): IResponse
 }
 
 export interface IEndpoint {
-  middleware (req: IRequest, res: IResponse, next?: Function): IAny;
+  middleware (req: IRequest, res: IResponse, next?: IFunction | Function): IAny;
 }

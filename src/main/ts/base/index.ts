@@ -11,7 +11,7 @@ export {
   isFunction,
   mapValues,
   toArray,
-  pickBy
+  pickBy,
 } from 'lodash'
 
 export function isDefined (value?: any): boolean {

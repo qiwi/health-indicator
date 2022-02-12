@@ -1,5 +1,5 @@
 import { extend } from '../base'
-import { IHealth, IHealthOpts, IHealthDeps } from './interface'
+import { IHealth, IHealthDeps, IHealthOpts } from './interface'
 
 export class Health implements IHealth {
   status: string

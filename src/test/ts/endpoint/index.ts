@@ -1,4 +1,5 @@
 import reqresnext from 'reqresnext'
+
 import { Endpoint } from '../../../main/ts/endpoint'
 import { SemaphoreIndicator } from '../../../main/ts/indicator'
 
@@ -6,7 +7,6 @@ describe('Endpoint', () => {
   const indicator = new SemaphoreIndicator()
   describe('constructor', () => {
     it('requires indicator instance as param', () => {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
       // @ts-ignore
       expect(() => new Endpoint()).toThrow()
     })

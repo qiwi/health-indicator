@@ -53,11 +53,11 @@ describe('AbstractIndicator', () => {
             deps: {
               dep2: new CustomIndicator({
                 deps: {
-                  dep3: new CustomIndicator({ critical })
-                }
-              })
-            }
-          })
+                  dep3: new CustomIndicator({ critical }),
+                },
+              }),
+            },
+          }),
         }
         expect(AbstractIndicator.resolveCriticalFromDeps(deps, false)).toBe(true)
       })
@@ -74,7 +74,7 @@ describe('AbstractIndicator', () => {
       const order = [down, unknown, up]
       const deps = {
         dep1: new CustomIndicator({ status: down }),
-        dep2: new CustomIndicator({ status: unknown })
+        dep2: new CustomIndicator({ status: unknown }),
       }
 
       expect(AbstractIndicator.getLowestStatus(deps, order)).toEqual(down)
@@ -91,9 +91,9 @@ describe('AbstractIndicator', () => {
         dep1: new CustomIndicator({ status: red }),
         dep2: new CustomIndicator({
           deps: {
-            dep3: new CustomIndicator({ status: yellow })
-          }
-        })
+            dep3: new CustomIndicator({ status: yellow }),
+          },
+        }),
       }
 
       expect(AbstractIndicator.getHighestStatus(deps, order)).toEqual(yellow)
@@ -113,17 +113,17 @@ describe('AbstractIndicator', () => {
           dep1: new CustomIndicator({ status: green }),
           dep2: new CustomIndicator({
             deps: {
-              dep3: new CustomIndicator({ status: yellow, critical })
-            }
+              dep3: new CustomIndicator({ status: yellow, critical }),
+            },
           }),
           dep4: Object.assign(new CustomIndicator(), {
             health () {
               return {
                 status: green,
-                critical
+                critical,
               }
-            }
-          })
+            },
+          }),
         }
         expect(AbstractIndicator.resolveStatusFromDeps(deps, order)).toEqual(yellow)
       })
@@ -133,15 +133,15 @@ describe('AbstractIndicator', () => {
           dep1: new CustomIndicator({ status: red }),
           dep2: new CustomIndicator({
             deps: {
-              dep3: new CustomIndicator({ status: green })
-            }
+              dep3: new CustomIndicator({ status: green }),
+            },
           }),
           dep4: new CustomIndicator({
             status: red,
             deps: {
-              dep5: new CustomIndicator({ status: yellow })
-            }
-          })
+              dep5: new CustomIndicator({ status: yellow }),
+            },
+          }),
         }
         expect(AbstractIndicator.resolveStatusFromDeps(deps, order)).toEqual(green)
       })
@@ -162,7 +162,7 @@ describe('AbstractIndicator', () => {
       it('resolves value from deps if exists', () => {
         const status = 'bar'
         const deps = {
-          dep1: new CustomIndicator({ status })
+          dep1: new CustomIndicator({ status }),
         }
         expect(new CustomIndicator({ deps }).getStatus()).toEqual(status)
       })
@@ -192,7 +192,7 @@ describe('AbstractIndicator', () => {
       it('resolves value from deps if exists', () => {
         const critical = true
         const deps = {
-          dep1: new CustomIndicator({ critical })
+          dep1: new CustomIndicator({ critical }),
         }
         expect(new CustomIndicator({ deps }).getCritical()).toEqual(critical)
       })
@@ -201,7 +201,7 @@ describe('AbstractIndicator', () => {
     describe('getDeps', () => {
       it('returns deps reference if exists', () => {
         const deps = {
-          dep1: new CustomIndicator({})
+          dep1: new CustomIndicator({}),
         }
         expect(new CustomIndicator({ deps }).getDeps()).toEqual(deps)
       })
@@ -217,16 +217,16 @@ describe('AbstractIndicator', () => {
           dep1: new CustomIndicator({ status: 'FOO' }),
           dep2: new CustomIndicator({
             deps: {
-              dep3: new CustomIndicator({ status: 'BAR' })
-            }
+              dep3: new CustomIndicator({ status: 'BAR' }),
+            },
           }),
           dep4: new CustomIndicator({
             status: 'QUX',
             critical: false,
             deps: {
-              dep5: new CustomIndicator({ status: 'BAZ', critical: true, extra: { a: 'A' } })
-            }
-          })
+              dep5: new CustomIndicator({ status: 'BAZ', critical: true, extra: { a: 'A' } }),
+            },
+          }),
         }
         const extra = { b: 'B' }
         const indicator = new CustomIndicator({ deps, extra })
@@ -239,18 +239,18 @@ describe('AbstractIndicator', () => {
             dep1: {
               deps: {},
               status: 'FOO',
-              critical: false
+              critical: false,
             },
             dep2: {
               deps: {
                 dep3: {
                   deps: {},
                   status: 'BAR',
-                  critical: false
-                }
+                  critical: false,
+                },
               },
               status: 'BAR',
-              critical: false
+              critical: false,
             },
             dep4: {
               deps: {
@@ -258,13 +258,13 @@ describe('AbstractIndicator', () => {
                   a: 'A',
                   deps: {},
                   status: 'BAZ',
-                  critical: true
-                }
+                  critical: true,
+                },
               },
               status: 'QUX',
-              critical: false
-            }
-          }
+              critical: false,
+            },
+          },
         })
       })
     })
