@@ -108,3 +108,6 @@ export default class SemaphoreIndicator extends AbstractIndicator {
   }
 }
 ```
+
+## License
+[MIT](./LICENSE)
