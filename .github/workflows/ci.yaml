@@ -65,6 +65,16 @@ jobs:
       - name: Unit test only
         run: yarn test
 
+      - name: Update coverage
+        if: github.ref == 'refs/heads/master'
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifact-${{ github.run_id }}
+          retention-days: 1
+          path: |
+            coverage
+            .nyc_output
+
   test_pr:
     if: github.event_name == 'pull_request'
     needs: build
