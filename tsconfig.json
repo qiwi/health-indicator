@@ -15,7 +15,7 @@
     "noUnusedParameters": true,
     "importHelpers": true,
     "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true,
+    "skipLibCheck": false,
     "resolveJsonModule": true,
     "experimentalDecorators": true,
     "incremental": true,
