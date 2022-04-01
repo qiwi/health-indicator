@@ -8,7 +8,7 @@ const {
   mapValues,
   toArray,
   pickBy,
-} = lodash
+} = (lodash as any).default || lodash
 
 export {
   extend,

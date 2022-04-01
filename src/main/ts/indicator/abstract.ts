@@ -59,7 +59,7 @@ export class AbstractIndicator implements IIndicator {
   health (): IHealth {
     const status = this.getStatus()
     const critical = this.getCritical()
-    const deps: IHealthDeps = mapValues(this.getDeps(), dep => dep.health())
+    const deps: IHealthDeps = mapValues(this.getDeps(), (dep: IIndicator) => dep.health())
     const extra: any = this.getExtra()
 
     return new Health({
@@ -150,7 +150,7 @@ export class AbstractIndicator implements IIndicator {
       return !!def
     }
 
-    return !!find(deps, dep => dep.health().critical)
+    return !!find(deps, (dep: IIndicator) => dep.health().critical)
   }
 
   static resolveStatusFromDeps (deps: IIndicatorDeps | undefined, order: string[], def?: string): string {
@@ -158,7 +158,7 @@ export class AbstractIndicator implements IIndicator {
       return '' + def
     }
 
-    const criticalDeps: IIndicatorDeps = pickBy(deps, dep => dep.health().critical)
+    const criticalDeps: IIndicatorDeps = pickBy(deps, (dep: IIndicator) => dep.health().critical)
     if (!isEmpty(criticalDeps)) {
       return this.getLowestStatus(criticalDeps, order)
     }
@@ -175,7 +175,7 @@ export class AbstractIndicator implements IIndicator {
     const depsArray: IIndicator[] = toArray(deps)
     const _order = order || this.getSeverityOrder()
 
-    return minBy(depsArray, dep => {
+    return minBy(depsArray, (dep: IIndicator) => {
       const index = _order.indexOf(dep.health().status)
 
       return index === -1
@@ -193,7 +193,7 @@ export class AbstractIndicator implements IIndicator {
     const depsArray: IIndicator[] = toArray(deps)
     const _order = order || this.getSeverityOrder()
 
-    return maxBy(depsArray, dep => {
+    return maxBy(depsArray, (dep: IIndicator) => {
       const index = _order.indexOf(dep.health().status)
 
       return index === -1
