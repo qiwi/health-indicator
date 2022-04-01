@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/qiwi/health-indicator/compare/v1.3.4...v2.0.0) (2022-04-01)
+
+
+### Features
+
+* move to esm ([d594f44](https://github.com/qiwi/health-indicator/commit/d594f44f108b32bb6d858d9148a65ca3ae2b7869))
+
+
+### BREAKING CHANGES
+
+* require Node.js v12
+
 ## [1.3.4](https://github.com/qiwi/health-indicator/compare/v1.3.3...v1.3.4) (2022-02-12)
 
 
