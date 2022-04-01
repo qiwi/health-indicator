@@ -1,5 +1,5 @@
 import reqresnext from 'reqresnext'
-import { Endpoint, SemaphoreIndicator } from '../../../target/ts'
+import { Endpoint, SemaphoreIndicator } from '../../../target/es6/index.js'
 
 describe('target', () => {
   describe('Endpoint', () => {
