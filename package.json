@@ -76,7 +76,7 @@
     "@types/jest-json-schema": "^6.1.0",
     "eslint": "^8.15.0",
     "eslint-config-qiwi": "^1.17.1",
-    "jest": "^28.1.0",
+    "jest": "^29.0.0",
     "microbundle": "^0.15.0",
     "reqresnext": "^1.7.0",
     "rimraf": "^3.0.2",
