@@ -7,5 +7,5 @@
   "excludePrivate": true,
   "hideGenerator": true,
   "readme": "default",
-  "tsconfig": "./tsconfig.mjs.json"
+  "tsconfig": "./tsconfig.esm.json"
 }
