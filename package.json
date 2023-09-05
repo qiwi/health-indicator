@@ -8,8 +8,8 @@
   },
   "exports": {
     ".": {
-      "import": "./target/mjs/index.js",
-      "require": "./target/cjs/index.js"
+      "import": "./target/mjs/index.mjs",
+      "require": "./target/cjs/index.cjs"
     },
     "./*": "./*"
   },
